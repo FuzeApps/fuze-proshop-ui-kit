@@ -5103,10 +5103,10 @@ expo-modules-core@^1.5.4:
     compare-versions "^3.4.0"
     invariant "^2.2.4"
 
-expo-video-thumbnails@^9.0.3:
-  version "9.0.3"
-  resolved "https://registry.yarnpkg.com/expo-video-thumbnails/-/expo-video-thumbnails-9.0.3.tgz#49934c9d1176d1e3e2172e1fff7f3bef69d8d5ce"
-  integrity sha512-WDbYMNlcTN/jBnjXZkHWqbgWloHUpG8ZQfie/Ic+BcJagG00TenHcbdzEYiIjshcF4Hhvl3D8okbPFjDFip9/Q==
+expo-video-thumbnails@~8.0.0:
+  version "8.0.0"
+  resolved "https://registry.yarnpkg.com/expo-video-thumbnails/-/expo-video-thumbnails-8.0.0.tgz#cc6b52190889603885d88580d4dda7d56817132e"
+  integrity sha512-VWVkBjn8DRodRVCDDaFxnQrOaPNzTeEcGBvPWcAv9WQ4D+TY0KCl36x4gUf9HUfhhH8uwZdmP1g1rSFtqCTGLg==
 
 external-editor@^3.0.3:
   version "3.1.0"
