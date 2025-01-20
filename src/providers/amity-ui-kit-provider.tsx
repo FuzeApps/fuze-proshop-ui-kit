@@ -29,6 +29,23 @@ interface CustomColors {
 export interface MyMD3Theme extends MD3Theme {
   colors: MD3Theme['colors'] & CustomColors;
 }
+
+const proShopTheme: MyMD3Theme = {
+  ...DefaultTheme,
+  colors: {
+    ...DefaultTheme.colors,
+    primary: '#118cf7',
+    secondary: '#182230',
+    background: '#2c3748',
+    border: '#182230',
+    base: '#fcfcfd',
+    baseShade1: '#98a2b3',
+    baseShade2: '#7f889e',
+    baseShade3: '#182230',
+    screenBackground: '#182230',
+  },
+};
+
 export default function AmityUiKitProvider({
   userId,
   displayName,
@@ -53,6 +70,7 @@ export default function AmityUiKitProvider({
       baseShade3: theme?.baseShade3 ?? '#A5A9B5',
       screenBackground: theme?.screenBackground ?? '#EBECEF',
     },
+    ...proShopTheme,
   };
 
   const defaultDarkTheme: MyMD3Theme = {
