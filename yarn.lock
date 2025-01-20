@@ -3,9 +3,9 @@
 
 
 "@amityco/ts-sdk-react-native@^6.30.0":
-  version "6.30.0"
-  resolved "https://registry.yarnpkg.com/@amityco/ts-sdk-react-native/-/ts-sdk-react-native-6.30.0.tgz#a4670c3dc3ac437f57cf3ce918e6acb8a6631124"
-  integrity sha512-6fflByh9fhaxor5g88cawHscUUdoFzvnmk7gNwFFN2ip0zomFJuCOFtSns/4pDmNRTT4x+xEE2uguywNwqsUDg==
+  version "6.33.0"
+  resolved "https://registry.yarnpkg.com/@amityco/ts-sdk-react-native/-/ts-sdk-react-native-6.33.0.tgz#c76d721f486f6a85d4047f69612e29609de3d72a"
+  integrity sha512-+boqr9K93vUJjbu9soITA7M7nW64K4El3DpiulgdVKDkquL/iGj7nzrtqKUGQFqyu/fA7haO/UWlRgyh9RirKg==
   dependencies:
     "@react-native-async-storage/async-storage" "^1.17.7"
     "@react-native-community/netinfo" "^9.4.1"
