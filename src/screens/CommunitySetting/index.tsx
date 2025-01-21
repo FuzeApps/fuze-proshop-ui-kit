@@ -1,12 +1,12 @@
-import React from 'react';
-import { View, Text, FlatList, TouchableOpacity, Image } from 'react-native';
-import { getStyles } from './styles';
 import { CommunityRepository } from '@amityco/ts-sdk-react-native';
-import CloseButton from '../../components/BackButton';
-import { SvgXml } from 'react-native-svg';
-import { arrowOutlined } from '../../svg/svg-xml-list';
+import React from 'react';
+import { FlatList, Text, TouchableOpacity, View } from 'react-native';
 import { useTheme } from 'react-native-paper';
+import { SvgXml } from 'react-native-svg';
 import type { MyMD3Theme } from 'src/providers/amity-ui-kit-provider';
+import CloseButton from '../../components/BackButton';
+import { arrowOutlined, members } from '../../svg/svg-xml-list';
+import { useGetStyles } from './styles';
 
 interface ChatDetailProps {
   navigation: any;
@@ -18,7 +18,7 @@ export const CommunitySetting: React.FC<ChatDetailProps> = ({
   route,
 }) => {
   const theme = useTheme() as MyMD3Theme;
-  const styles = getStyles();
+  const styles = useGetStyles();
   const { communityId, communityName } = route.params;
   React.useLayoutEffect(() => {
     // Set the headerRight component to a TouchableOpacity
@@ -48,10 +48,7 @@ export const CommunitySetting: React.FC<ChatDetailProps> = ({
             onPress={handleMembersPress}
           >
             <View style={styles.iconContainer}>
-              <Image
-                source={require('../../../assets/icon/groupMember.png')}
-                style={styles.groupIcon}
-              />
+              <SvgXml xml={members()} width={24} />
             </View>
             <Text style={styles.rowText}>Members</Text>
             <SvgXml xml={arrowOutlined(theme.colors.base)} width={24} />

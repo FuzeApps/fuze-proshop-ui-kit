@@ -13,7 +13,7 @@ import {
   type NativeScrollEvent,
   ScrollView,
 } from 'react-native';
-import { getStyles } from './styles';
+import { useGetStyles } from './styles';
 import { UserRepository } from '@amityco/ts-sdk-react-native';
 import Feed from '../Feed';
 import CustomTab from '../../components/CustomTab';
@@ -22,7 +22,7 @@ import { useNavigation } from '@react-navigation/native';
 import type { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import useAuth from '../../hooks/useAuth';
 import { SvgXml } from 'react-native-svg';
-import { editIcon } from '../../svg/svg-xml-list';
+import { editIcon, kebabMenu } from '../../svg/svg-xml-list';
 import type { MyMD3Theme } from '../../providers/amity-ui-kit-provider';
 import { useTheme } from 'react-native-paper';
 import FloatingButton from '../../components/FloatingButton';
@@ -30,7 +30,7 @@ import { TabName } from '../../enum/tabNameState';
 
 export default function UserProfile({ route }: any) {
   const theme = useTheme() as MyMD3Theme;
-  const styles = getStyles();
+  const styles = useGetStyles();
   const { apiRegion, client } = useAuth();
   const navigation = useNavigation<NativeStackNavigationProp<any>>();
   const { userId } = route.params;
@@ -76,10 +76,7 @@ export default function UserProfile({ route }: any) {
             });
           }}
         >
-          <Image
-            source={require('../../../assets/icon/threeDot.png')}
-            style={styles.dotIcon}
-          />
+          <SvgXml xml={kebabMenu()} width={24} />
         </TouchableOpacity>
       ),
     });

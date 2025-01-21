@@ -2,7 +2,7 @@ import { StyleSheet } from 'react-native';
 import { useTheme } from 'react-native-paper';
 import type { MyMD3Theme } from 'src/providers/amity-ui-kit-provider';
 
-export const getStyles = () => {
+export const useGetStyles = () => {
   const theme = useTheme() as MyMD3Theme;
   const styles = StyleSheet.create({
     barContainer: {
@@ -52,7 +52,7 @@ export const getStyles = () => {
       marginHorizontal: 3,
       zIndex: 999,
       paddingVertical: 5,
-
+      color: theme.colors.base,
       // Additional styles if needed
     },
     transparentText: {

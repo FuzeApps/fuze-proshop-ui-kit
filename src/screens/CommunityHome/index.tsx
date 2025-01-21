@@ -23,7 +23,7 @@ import {
   Pressable,
 } from 'react-native';
 import CustomTab from '../../components/CustomTab';
-import { getStyles } from './styles';
+import { useGetStyles } from './styles';
 import Feed from '../Feed';
 import useAuth from '../../hooks/useAuth';
 import { SvgXml } from 'react-native-svg';
@@ -46,7 +46,7 @@ export type FeedRefType = {
 export default function CommunityHome({ route }: any) {
   const navigation = useNavigation<NativeStackNavigationProp<any>>();
   const theme = useTheme() as MyMD3Theme;
-  const styles = getStyles();
+  const styles = useGetStyles();
   const { apiRegion, client } = useAuth();
   const { communityId, communityName } = route.params as {
     communityId: string;
@@ -171,6 +171,7 @@ export default function CommunityHome({ route }: any) {
       communityName: communityName,
     });
   };
+
   function triggerLoadMoreFunction() {
     if (feedRef.current) {
       feedRef.current.handleLoadMore(); // Call the function inside the child component
@@ -262,7 +263,7 @@ export default function CommunityHome({ route }: any) {
                 ? {
                     uri: avatarUrl,
                   }
-                : require('../../../assets/icon/Placeholder.png')
+                : require('../../../assets/icon/community-background-placeholder.png')
             }
           />
           <View style={styles.darkOverlay} />

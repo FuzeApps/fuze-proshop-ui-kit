@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { View, FlatList } from 'react-native';
-import { getStyles } from './styles';
+import { useGetStyles } from './styles';
 import { UserRepository } from '@amityco/ts-sdk-react-native';
 import SearchItem, { ISearchItem } from '../SearchItem';
 export default function MentionPopup({
@@ -10,7 +10,7 @@ export default function MentionPopup({
   userName: string;
   onSelectMention: (target: ISearchItem) => void;
 }) {
-  const styles = getStyles();
+  const styles = useGetStyles();
   const [usersObject, setUsersObject] =
     useState<Amity.LiveCollection<Amity.User>>();
   const [searchList, setSearchList] = useState<ISearchItem[]>([]);

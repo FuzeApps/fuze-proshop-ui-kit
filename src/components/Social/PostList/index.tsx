@@ -1,30 +1,37 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, { useEffect, useRef, useState, useMemo } from 'react';
+import React, { useEffect, useMemo, useRef, useState } from 'react';
 // import { useTranslation } from 'react-i18next';
 
 import {
-  View,
-  Text,
-  TouchableOpacity,
+  Alert,
+  Animated,
   Image,
-  TouchableWithoutFeedback,
   Modal,
   Pressable,
-  Animated,
-  Alert,
+  Text,
+  TouchableOpacity,
+  TouchableWithoutFeedback,
+  View,
 } from 'react-native';
 import { SvgXml } from 'react-native-svg';
 import {
-  arrowXml,
   commentXml,
   likedXml,
   likeXml,
   personXml,
   threeDots,
 } from '../../../svg/svg-xml-list';
-import { getStyles } from './styles';
+import { useGetStyles } from './styles';
 
-import type { UserInterface } from '../../../types/user.interface';
+import { useNavigation } from '@react-navigation/native';
+import type { NativeStackNavigationProp } from '@react-navigation/native-stack';
+import { useTheme } from 'react-native-paper';
+import { useDispatch } from 'react-redux';
+import EditPostModal from '../../../components/EditPostModal';
+import MediaSection from '../../../components/MediaSection';
+import useAuth from '../../../hooks/useAuth';
+import type { MyMD3Theme } from '../../../providers/amity-ui-kit-provider';
+import { getCommunityById } from '../../../providers/Social/communities-sdk';
 import {
   addPostReaction,
   isReportTarget,
@@ -32,19 +39,11 @@ import {
   reportTargetById,
   unReportTargetById,
 } from '../../../providers/Social/feed-sdk';
-import { getCommunityById } from '../../../providers/Social/communities-sdk';
-import { useNavigation } from '@react-navigation/native';
-import type { NativeStackNavigationProp } from '@react-navigation/native-stack';
-import useAuth from '../../../hooks/useAuth';
-import EditPostModal from '../../../components/EditPostModal';
-import { useTheme } from 'react-native-paper';
-import type { MyMD3Theme } from '../../../providers/amity-ui-kit-provider';
-import MediaSection from '../../../components/MediaSection';
-import postDetailSlice from '../../../redux/slices/postDetailSlice';
-import { useDispatch } from 'react-redux';
-import globalFeedSlice from '../../../redux/slices/globalfeedSlice';
-import { IMentionPosition } from '../../../screens/CreatePost';
 import feedSlice from '../../../redux/slices/feedSlice';
+import globalFeedSlice from '../../../redux/slices/globalfeedSlice';
+import postDetailSlice from '../../../redux/slices/postDetailSlice';
+import { IMentionPosition } from '../../../screens/CreatePost';
+import type { UserInterface } from '../../../types/user.interface';
 
 export interface IPost {
   postId: string;
@@ -89,7 +88,7 @@ export default function PostList({
 
   const theme = useTheme() as MyMD3Theme;
   const { client, apiRegion } = useAuth();
-  const styles = getStyles();
+  const styles = useGetStyles();
   const [isLike, setIsLike] = useState<boolean>(false);
   const [likeReaction, setLikeReaction] = useState<number>(0);
   const [communityName, setCommunityName] = useState('');
@@ -495,26 +494,30 @@ export default function PostList({
             </View>
           )}
 
-          <View>
+          <View style={styles.flex}>
             <View style={styles.headerRow}>
-              <TouchableOpacity onPress={handleDisplayNamePress}>
-                <Text style={styles.headerText}>{user?.displayName}</Text>
-              </TouchableOpacity>
+              <View>
+                <Text numberOfLines={2} style={{ width: '100%' }}>
+                  <Text
+                    onPress={handleDisplayNamePress}
+                    style={styles.headerText}
+                  >
+                    {user?.displayName}
+                  </Text>
+                  {communityName && (
+                    <>
+                      <Text style={styles.headerText}>{'  ▶  '}</Text>
 
-              {communityName && (
-                <>
-                  <SvgXml
-                    style={styles.arrow}
-                    xml={arrowXml}
-                    width="8"
-                    height="8"
-                  />
-
-                  <TouchableOpacity onPress={handleCommunityNamePress}>
-                    <Text style={styles.headerText}>{communityName}</Text>
-                  </TouchableOpacity>
-                </>
-              )}
+                      <Text
+                        onPress={handleCommunityNamePress}
+                        style={styles.headerText}
+                      >
+                        {communityName}
+                      </Text>
+                    </>
+                  )}
+                </Text>
+              </View>
             </View>
             <View style={styles.timeRow}>
               <Text style={styles.headerTextTime}>

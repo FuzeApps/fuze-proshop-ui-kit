@@ -23,7 +23,7 @@ import {
 import { useNavigation } from '@react-navigation/native';
 import type { NativeStackNavigationProp } from '@react-navigation/native-stack';
 // import * as ImagePicker from 'expo-image-picker';
-import { getStyles } from './styles';
+import { useGetStyles } from './styles';
 import ChooseCategoryModal from '../../components/ChooseCategoryModal';
 import { RadioButton } from 'react-native-radio-buttons-group';
 import AddMembersModal from '../../components/AddMembersModal';
@@ -40,7 +40,7 @@ import { uploadImageFile } from '../../providers/file-provider';
 import { PrivacyState } from '../../enum/privacyState';
 
 export default function CreateCommunity() {
-  const styles = getStyles();
+  const styles = useGetStyles();
   const theme = useTheme() as MyMD3Theme;
   const { apiRegion } = useAuth();
   const [image, setImage] = useState<string>();
@@ -209,7 +209,7 @@ export default function CreateCommunity() {
             <TextInput
               style={styles.inputField}
               placeholder="Name your community"
-              placeholderTextColor={theme.colors.baseShade3}
+              placeholderTextColor={theme.colors.baseShade2}
               value={communityName}
               onChangeText={(text) => setCommunityName(text)}
               maxLength={MAX_COMMUNITY_NAME_LENGTH}
@@ -227,7 +227,7 @@ export default function CreateCommunity() {
             <TextInput
               style={styles.inputField}
               placeholder="Enter description"
-              placeholderTextColor={theme.colors.baseShade3}
+              placeholderTextColor={theme.colors.baseShade2}
               value={aboutText}
               onChangeText={(text) => setAboutText(text)}
               maxLength={MAX_ABOUT_TEXT_LENGTH}

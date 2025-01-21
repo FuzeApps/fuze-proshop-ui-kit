@@ -2,7 +2,7 @@ import { StyleSheet } from 'react-native';
 import { useTheme } from 'react-native-paper';
 import type { MyMD3Theme } from 'src/providers/amity-ui-kit-provider';
 
-export const getStyles = () => {
+export const useGetStyles = () => {
   const theme = useTheme() as MyMD3Theme;
   const styles = StyleSheet.create({
     container: {
@@ -16,7 +16,7 @@ export const getStyles = () => {
       alignItems: 'center',
       paddingHorizontal: 15,
       borderBottomWidth: 1,
-      borderBottomColor: '#DDDDDD',
+      borderBottomColor: theme.colors.baseShade3,
     },
     backIcon: {
       width: 25,
@@ -37,13 +37,13 @@ export const getStyles = () => {
       paddingVertical: 15,
       paddingHorizontal: 16,
       borderBottomWidth: 1,
-      borderBottomColor: '#DDDDDD',
+      borderBottomColor: theme.colors.baseShade3,
     },
     iconContainer: {
       width: 28,
       height: 28,
       borderRadius: 4,
-      backgroundColor: '#EFEFEF',
+      backgroundColor: theme.colors.baseShade4,
       justifyContent: 'center',
       alignItems: 'center',
       marginRight: 15,
@@ -72,12 +72,12 @@ export const getStyles = () => {
     leaveChatText: {
       fontSize: 16,
       fontWeight: '600',
-      color: '#FF0000',
+      // color: theme.colors.error,
     },
     leaveChatLabel: {
       fontSize: 16,
       fontWeight: '600',
-      color: 'red',
+      color: theme.colors.alert,
     },
   });
 

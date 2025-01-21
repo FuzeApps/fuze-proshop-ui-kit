@@ -2,7 +2,7 @@ import { StyleSheet } from 'react-native';
 import { useTheme } from 'react-native-paper';
 import type { MyMD3Theme } from 'src/providers/amity-ui-kit-provider';
 
-export const getStyles = () => {
+export const useGetStyles = () => {
   const theme = useTheme() as MyMD3Theme;
   const styles = StyleSheet.create({
     container: {
@@ -32,7 +32,7 @@ export const getStyles = () => {
       paddingTop: 10,
       alignItems: 'center',
       borderTopWidth: 1,
-      borderTopColor: theme.colors.border,
+      borderTopColor: theme.colors.baseShade3,
     },
     postDisabledBtn: {
       color: '#A0BDF8',
@@ -48,14 +48,14 @@ export const getStyles = () => {
     commentItem: {
       padding: 16,
       borderBottomWidth: 1,
-      borderBottomColor: theme.colors.border,
+      borderTopColor: theme.colors.baseShade3,
     },
     comment: {
       fontSize: 14,
     },
     commentListWrap: {
       borderTopWidth: 1,
-      borderTopColor: theme.colors.border,
+      borderTopColor: theme.colors.baseShade3,
     },
     textInput: {
       borderWidth: 0,
@@ -67,7 +67,7 @@ export const getStyles = () => {
       paddingTop: 0,
       width: '100%',
       borderRadius: 20,
-
+      color: theme.colors.base,
       // Additional styles if needed
     },
     transparentText: {

@@ -8,7 +8,7 @@ import {
   Image,
   TouchableOpacity,
 } from 'react-native';
-import { getStyles } from './styles';
+import { useGetStyles } from './styles';
 import CloseButton from '../../components/BackButton';
 import useAuth from '../../hooks/useAuth';
 
@@ -18,7 +18,7 @@ export default function CategoryList({ navigation }: any) {
   const [loading, setLoading] = useState(false);
   const [hasNextPage, setHasNextPage] = useState(false);
 
-  const styles = getStyles();
+  const styles = useGetStyles();
   const onNextPageRef = useRef<(() => void) | null>(null);
   const isFetchingRef = useRef(false);
   const onEndReachedCalledDuringMomentumRef = useRef(true);

@@ -23,7 +23,7 @@ import {
   galleryIcon,
   playVideoIcon,
 } from '../../svg/svg-xml-list';
-import { getStyles } from './styles';
+import { useGetStyles } from './styles';
 
 import * as ImagePicker from 'expo-image-picker';
 
@@ -56,7 +56,7 @@ export interface IMentionPosition {
 }
 const CreatePost = ({ route }: any) => {
   const theme = useTheme() as MyMD3Theme;
-  const styles = getStyles();
+  const styles = useGetStyles();
   const { targetId, targetType, targetName } = route.params;
   const navigation = useNavigation<NativeStackNavigationProp<any>>();
   const [inputMessage, setInputMessage] = useState('');
@@ -492,7 +492,6 @@ const CreatePost = ({ route }: any) => {
     });
     setMentionNames(checkMentionNames);
     setMentionsPosition(checkMentionPosition);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [inputMessage]);
 
   return (
@@ -546,7 +545,7 @@ const CreatePost = ({ route }: any) => {
               }
               value={inputMessage}
               onChangeText={(text) => setInputMessage(text)}
-              placeholderTextColor={theme.colors.baseShade3}
+              placeholderTextColor={theme.colors.baseShade2}
               onSelectionChange={handleSelectionChange}
             />
             {mentionNames.length > 0 && (

@@ -2,7 +2,7 @@ import { StyleSheet } from 'react-native';
 import { useTheme } from 'react-native-paper';
 import type { MyMD3Theme } from 'src/providers/amity-ui-kit-provider';
 
-export const getStyles = () => {
+export const useGetStyles = () => {
   const theme = useTheme() as MyMD3Theme;
 
   const styles = StyleSheet.create({
@@ -10,7 +10,7 @@ export const getStyles = () => {
       backgroundColor: theme.colors.background,
       paddingHorizontal: 12,
       width: '100%',
-      borderBottomColor: '#EBECEF',
+      borderBottomColor: theme.colors.baseShade3,
       borderBottomWidth: 1,
       alignSelf: 'center',
     },

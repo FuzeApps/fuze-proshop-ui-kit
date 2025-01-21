@@ -11,7 +11,7 @@ import {
   Animated,
   Alert,
 } from 'react-native';
-import { getStyles } from './styles';
+import { useGetStyles } from './styles';
 import { SvgXml } from 'react-native-svg';
 import {
   likedXml,
@@ -80,7 +80,7 @@ export default function CommentList({
     mentionPosition,
   } = commentDetail;
   const theme = useTheme() as MyMD3Theme;
-  const styles = getStyles();
+  const styles = useGetStyles();
   const [isLike, setIsLike] = useState<boolean>(
     myReactions ? myReactions.includes('like') : false
   );

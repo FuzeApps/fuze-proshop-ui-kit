@@ -21,7 +21,7 @@ import {
 import type { RootStackParamList } from 'src/routes/RouteParamList';
 import PostList, { IPost } from '../../components/Social/PostList';
 
-import { getStyles } from './styles';
+import { useGetStyles } from './styles';
 import type { IComment } from '../../components/Social/CommentList';
 import type { UserInterface } from '../../types/user.interface';
 import { getAmityUser } from '../../providers/user-provider';
@@ -55,7 +55,7 @@ import _ from 'lodash';
 
 const PostDetail = () => {
   const theme = useTheme() as MyMD3Theme;
-  const styles = getStyles();
+  const styles = useGetStyles();
   const route = useRoute<RouteProp<RootStackParamList, 'PostDetail'>>();
 
   const { postId, postIndex, isFromGlobalfeed } = route.params;
@@ -433,7 +433,7 @@ const PostDetail = () => {
             }
             value={inputMessage}
             onChangeText={(text) => setInputMessage(text)}
-            placeholderTextColor={theme.colors.baseShade3}
+            placeholderTextColor={theme.colors.baseShade2}
             onSelectionChange={handleSelectionChange}
           />
           {mentionNames.length > 0 && (

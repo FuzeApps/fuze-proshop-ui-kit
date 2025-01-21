@@ -217,7 +217,7 @@ const EditCommunity = ({ navigation, route }) => {
                   defaultValue={defaultValues.community_name}
                   style={styles.inputField}
                   placeholder="Name your community"
-                  placeholderTextColor={theme.colors.baseShade3}
+                  placeholderTextColor={theme.colors.baseShade2}
                   onChangeText={onChange}
                   maxLength={MAX_COMMUNITY_NAME_LENGTH}
                 />
@@ -251,7 +251,7 @@ const EditCommunity = ({ navigation, route }) => {
                   defaultValue={defaultValues.community_description}
                   style={styles.inputField}
                   placeholder="Enter description"
-                  placeholderTextColor={theme.colors.baseShade3}
+                  placeholderTextColor={theme.colors.baseShade2}
                   onChangeText={onChange}
                   maxLength={MAX_ABOUT_TEXT_LENGTH}
                   multiline={true}

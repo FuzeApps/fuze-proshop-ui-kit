@@ -17,7 +17,7 @@ import {
   type NativeScrollEvent,
 } from 'react-native';
 import debounce from 'lodash.debounce';
-import { getStyles } from './styles';
+import { useGetStyles } from './styles';
 import { SvgXml } from 'react-native-svg';
 import { circleCloseIcon, plusIcon, searchIcon } from '../../svg/svg-xml-list';
 import { CommunityRepository } from '@amityco/ts-sdk-react-native';
@@ -28,7 +28,7 @@ import type { MyMD3Theme } from '../../providers/amity-ui-kit-provider';
 
 export default function AllMyCommunity({ navigation }) {
   const theme = useTheme() as MyMD3Theme;
-  const styles = getStyles();
+  const styles = useGetStyles();
   LogBox.ignoreAllLogs(true);
   const [searchTerm, setSearchTerm] = useState('');
   const [searchType] = useState('community');

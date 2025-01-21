@@ -11,7 +11,7 @@ import {
   TextInput,
 } from 'react-native';
 import { SvgXml } from 'react-native-svg';
-import { getStyles } from './styles';
+import { useGetStyles } from './styles';
 import { circleCloseIcon, closeIcon, searchIcon } from '../../svg/svg-xml-list';
 import type { UserInterface } from '../../types/user.interface';
 import UserItem from '../UserItem';
@@ -36,7 +36,7 @@ const AddMembersModal = ({
   onSelect,
   initUserList,
 }: IModal) => {
-  const styles = getStyles();
+  const styles = useGetStyles();
   const theme = useTheme() as MyMD3Theme;
   const [sectionedUserList, setSectionedUserList] = useState<SelectUserList[]>(
     []

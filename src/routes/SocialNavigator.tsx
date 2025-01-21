@@ -1,37 +1,37 @@
 /* eslint-disable react/no-unstable-nested-components */
 import { NavigationContainer } from '@react-navigation/native';
-import * as React from 'react';
 import {
   NativeStackNavigationProp,
   createNativeStackNavigator,
 } from '@react-navigation/native-stack';
-import type { RootStackParamList } from './RouteParamList';
-import useAuth from '../hooks/useAuth';
-import Explore from '../screens/Explore';
-import CategoryList from '../screens/CategorytList';
-import CommunityList from '../screens/CommunityList';
-import CommunityHome from '../screens/CommunityHome/index';
-import { CommunitySetting } from '../screens/CommunitySetting/index';
-import CommunityMemberDetail from '../screens/CommunityMemberDetail/CommunityMemberDetail';
-import Home from '../screens/Home';
-import PostDetail from '../screens/PostDetail';
-import CreatePost from '../screens/CreatePost';
-import UserProfile from '../screens/UserProfile/UserProfile';
-import { EditProfile } from '../screens/EditProfile/EditProfile';
-import UserProfileSetting from '../screens/UserProfileSetting/UserProfileSetting';
-import CommunitySearch from '../screens/CommunitySearch';
-import AllMyCommunity from '../screens/AllMyCommunity';
-import CreateCommunity from '../screens/CreateCommunity';
-import PendingPosts from '../screens/PendingPosts';
-import type { MyMD3Theme } from '../providers/amity-ui-kit-provider';
+import * as React from 'react';
+import { TouchableOpacity } from 'react-native';
 import { useTheme } from 'react-native-paper';
-import { Image, TouchableOpacity } from 'react-native';
 import { SvgXml } from 'react-native-svg';
-import { closeIcon, searchIcon } from '../svg/svg-xml-list';
-import { useStyles } from '../routes/style';
 import BackButton from '../components/BackButton';
 import CloseButton from '../components/CloseButton';
+import useAuth from '../hooks/useAuth';
+import type { MyMD3Theme } from '../providers/amity-ui-kit-provider';
+import { useStyles } from '../routes/style';
+import AllMyCommunity from '../screens/AllMyCommunity';
+import CategoryList from '../screens/CategorytList';
+import CommunityHome from '../screens/CommunityHome/index';
+import CommunityList from '../screens/CommunityList';
+import CommunityMemberDetail from '../screens/CommunityMemberDetail/CommunityMemberDetail';
+import CommunitySearch from '../screens/CommunitySearch';
+import { CommunitySetting } from '../screens/CommunitySetting/index';
+import CreateCommunity from '../screens/CreateCommunity';
+import CreatePost from '../screens/CreatePost';
 import EditCommunity from '../screens/EditCommunity/EditCommunity';
+import { EditProfile } from '../screens/EditProfile/EditProfile';
+import Explore from '../screens/Explore';
+import Home from '../screens/Home';
+import PendingPosts from '../screens/PendingPosts';
+import PostDetail from '../screens/PostDetail';
+import UserProfile from '../screens/UserProfile/UserProfile';
+import UserProfileSetting from '../screens/UserProfileSetting/UserProfileSetting';
+import { closeIcon, kebabMenu, searchIcon } from '../svg/svg-xml-list';
+import type { RootStackParamList } from './RouteParamList';
 
 export default function SocialNavigator() {
   const Stack = createNativeStackNavigator<RootStackParamList>();
@@ -51,7 +51,7 @@ export default function SocialNavigator() {
           screenOptions={{
             headerShadowVisible: false,
             contentStyle: {
-              backgroundColor: 'white',
+              backgroundColor: theme.colors.background,
             },
             headerStyle: {
               backgroundColor: theme.colors.background,
@@ -77,7 +77,7 @@ export default function SocialNavigator() {
                   />
                 </TouchableOpacity>
               ),
-              headerTitle: 'Community',
+              headerTitle: 'Clubhouse',
             })}
           />
           {/* <Stack.Screen name="Community" component={Home} /> */}
@@ -111,10 +111,7 @@ export default function SocialNavigator() {
                     });
                   }}
                 >
-                  <Image
-                    source={require('../../assets/icon/threeDot.png')}
-                    style={styles.dotIcon}
-                  />
+                  <SvgXml xml={kebabMenu()} />
                 </TouchableOpacity>
               ),
             })}
