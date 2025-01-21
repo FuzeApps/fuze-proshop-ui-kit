@@ -1,7 +1,7 @@
 import { CommunityRepository } from '@amityco/ts-sdk-react-native';
 import React, { useEffect, useState, useCallback, useRef } from 'react';
 import { FlatList, View, Text, ActivityIndicator, Image } from 'react-native';
-import { getStyles } from './styles';
+import { useGetStyles } from './styles';
 import CloseButton from '../../components/BackButton';
 import useAuth from '../../hooks/useAuth';
 
@@ -12,7 +12,7 @@ export default function CommunityList({ navigation, route }: any) {
   const { categoryId, categoryName } = route.params;
   const [hasNextPage, setHasNextPage] = useState(false);
 
-  const styles = getStyles();
+  const styles = useGetStyles();
   const onNextPageRef = useRef<(() => void) | null>(null);
   const isFetchingRef = useRef(false);
   const onEndReachedCalledDuringMomentumRef = useRef(true);

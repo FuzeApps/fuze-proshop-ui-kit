@@ -7,13 +7,13 @@ import { useState, useEffect } from 'react';
 // import { useTranslation } from 'react-i18next';
 
 import { View, Text, ScrollView, Image, TouchableOpacity } from 'react-native';
-import { getStyles } from './styles';
+import { useGetStyles } from './styles';
 import { useNavigation } from '@react-navigation/native';
 import type { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import useAuth from '../../hooks/useAuth';
 
 export default function Explore() {
-  const styles = getStyles();
+  const styles = useGetStyles();
   const { apiRegion } = useAuth();
   const navigation = useNavigation<NativeStackNavigationProp<any>>();
   const [recommendCommunityList, setRecommendCommunityList] = useState<

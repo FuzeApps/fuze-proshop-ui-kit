@@ -1,6 +1,6 @@
 import { StyleSheet } from 'react-native';
 
-export const getStyles = () => {
+export const useGetStyles = () => {
   const styles = StyleSheet.create({
     imageLargePost: {
       height: 350,

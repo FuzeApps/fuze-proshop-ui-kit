@@ -23,7 +23,7 @@ import {
 import { useNavigation } from '@react-navigation/native';
 import type { NativeStackNavigationProp } from '@react-navigation/native-stack';
 // import * as ImagePicker from 'expo-image-picker';
-import { getStyles } from './styles';
+import { useGetStyles } from './styles';
 import ChooseCategoryModal from '../../components/ChooseCategoryModal';
 import { RadioButton } from 'react-native-radio-buttons-group';
 import AddMembersModal from '../../components/AddMembersModal';
@@ -40,7 +40,7 @@ import { uploadImageFile } from '../../providers/file-provider';
 import { PrivacyState } from '../../enum/privacyState';
 
 export default function CreateCommunity() {
-  const styles = getStyles();
+  const styles = useGetStyles();
   const theme = useTheme() as MyMD3Theme;
   const { apiRegion } = useAuth();
   const [image, setImage] = useState<string>();

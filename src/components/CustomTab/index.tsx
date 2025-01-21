@@ -7,7 +7,7 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
-import { getStyles } from './styles';
+import { useGetStyles } from './styles';
 import { TabName } from '../../enum/tabNameState';
 
 interface ICustomTab {
@@ -15,7 +15,7 @@ interface ICustomTab {
   tabName: TabName[];
 }
 const CustomTab = ({ tabName, onTabChange }: ICustomTab): ReactElement => {
-  const styles = getStyles();
+  const styles = useGetStyles();
   const [activeTab, setActiveTab] = useState(1);
   const [indicatorAnim] = useState(new Animated.Value(0));
   const [tabOneWidth, setTabOneWidth] = useState<number>(0);

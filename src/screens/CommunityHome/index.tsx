@@ -23,7 +23,7 @@ import {
   Pressable,
 } from 'react-native';
 import CustomTab from '../../components/CustomTab';
-import { getStyles } from './styles';
+import { useGetStyles } from './styles';
 import Feed from '../Feed';
 import useAuth from '../../hooks/useAuth';
 import { SvgXml } from 'react-native-svg';
@@ -46,7 +46,7 @@ export type FeedRefType = {
 export default function CommunityHome({ route }: any) {
   const navigation = useNavigation<NativeStackNavigationProp<any>>();
   const theme = useTheme() as MyMD3Theme;
-  const styles = getStyles();
+  const styles = useGetStyles();
   const { apiRegion, client } = useAuth();
   const { communityId, communityName } = route.params as {
     communityId: string;

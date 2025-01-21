@@ -17,7 +17,7 @@ import FloatingButton from '../../components/FloatingButton';
 import useAuth from '../../hooks/useAuth';
 import Explore from '../Explore';
 import GlobalFeed from '../GlobalFeed';
-import { getStyles } from './styles';
+import { useGetStyles } from './styles';
 import CreatePostModal from '../../components/CreatePostModal';
 import CustomTab from '../../components/CustomTab';
 import { useTheme } from 'react-native-paper';
@@ -26,7 +26,7 @@ import { TabName } from '../../enum/tabNameState';
 LogBox.ignoreAllLogs(true);
 export default function Home() {
   // const { t, i18n } = useTranslation();
-  const styles = getStyles();
+  const styles = useGetStyles();
   const { client } = useAuth();
   const theme = useTheme() as MyMD3Theme;
   const [activeTab, setActiveTab] = useState<TabName>(TabName.Activity);

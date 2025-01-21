@@ -51,7 +51,7 @@ export default function SocialNavigator() {
           screenOptions={{
             headerShadowVisible: false,
             contentStyle: {
-              backgroundColor: 'white',
+              backgroundColor: theme.colors.background,
             },
             headerStyle: {
               backgroundColor: theme.colors.background,

@@ -3,6 +3,7 @@ import { Provider } from 'react-redux';
 import AuthContextProvider from './auth-provider';
 import { DefaultTheme, PaperProvider, type MD3Theme } from 'react-native-paper';
 import { store } from '../redux/store';
+import { amityUIKitTokens } from '../enum/tokens';
 export type CusTomTheme = typeof DefaultTheme;
 export interface IAmityUIkitProvider {
   userId: string;
@@ -15,7 +16,7 @@ export interface IAmityUIkitProvider {
   darkMode?: boolean;
 }
 
-interface CustomColors {
+export interface CustomColors {
   // Primary colors
   primary?: string;
   primaryShade1?: string;
@@ -48,29 +49,7 @@ const proShopTheme: MyMD3Theme = {
   ...DefaultTheme,
   colors: {
     ...DefaultTheme.colors,
-    // Primary colors
-    primary: '#118cf7',
-    primaryShade1: '#0559A3',
-    primaryShade2: '#033B6C',
-    primaryShade3: '#021E36',
-    primaryShade4: '#344054',
-
-    // Secondary colors
-    secondary: '#182230',
-    secondaryShade1: '#344054',
-    secondaryShade2: '#475467',
-    secondaryShade3: '#98A2B3',
-    secondaryShade4: '#667085',
-
-    base: '#fcfcfd',
-    baseShade1: '#98a2b3',
-    baseShade2: '#7f889e',
-    baseShade3: '#182230',
-    baseShade4: '#0C111D',
-
-    background: '#2c3748',
-    border: '#182230',
-    screenBackground: '#182230',
+    ...amityUIKitTokens.colors,
   },
 };
 
@@ -88,24 +67,17 @@ export default function AmityUiKitProvider({
     ...DefaultTheme,
     colors: {
       ...DefaultTheme.colors,
-      primary: theme?.primary ?? '#1054DE',
-      secondary: theme?.secondary ?? '#EBECEF',
-      background: theme?.background ?? '#FFFFFF',
-      border: theme?.border ?? '#EBECEF',
-      base: theme?.base ?? '#292B32',
-      baseShade1: theme?.baseShade1 ?? '#636878',
-      baseShade2: theme?.baseShade2 ?? '#898E9E',
-      baseShade3: theme?.baseShade3 ?? '#A5A9B5',
-      screenBackground: theme?.screenBackground ?? '#EBECEF',
+      ...proShopTheme.colors,
+      ...theme,
     },
-    ...proShopTheme,
   };
 
   const defaultDarkTheme: MyMD3Theme = {
     ...DefaultTheme,
     colors: {
       ...DefaultTheme.colors,
-      ...proShopTheme,
+      ...proShopTheme.colors,
+      ...theme,
     },
   };
 

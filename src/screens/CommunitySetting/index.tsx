@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, Text, FlatList, TouchableOpacity, Image } from 'react-native';
-import { getStyles } from './styles';
+import { useGetStyles } from './styles';
 import { CommunityRepository } from '@amityco/ts-sdk-react-native';
 import CloseButton from '../../components/BackButton';
 import { SvgXml } from 'react-native-svg';
@@ -18,7 +18,7 @@ export const CommunitySetting: React.FC<ChatDetailProps> = ({
   route,
 }) => {
   const theme = useTheme() as MyMD3Theme;
-  const styles = getStyles();
+  const styles = useGetStyles();
   const { communityId, communityName } = route.params;
   React.useLayoutEffect(() => {
     // Set the headerRight component to a TouchableOpacity

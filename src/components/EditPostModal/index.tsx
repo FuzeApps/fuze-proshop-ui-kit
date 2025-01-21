@@ -13,7 +13,7 @@ import {
 import { SvgXml } from 'react-native-svg';
 import { closeIcon } from '../../svg/svg-xml-list';
 
-import { getStyles } from './styles';
+import { useGetStyles } from './styles';
 import type { IDisplayImage } from '../../screens/CreatePost';
 import { editPost, getPostById } from '../../providers/Social/feed-sdk';
 import LoadingImage from '../LoadingImage';
@@ -46,7 +46,7 @@ const EditPostModal = ({
   onFinishEdit,
 }: IModal) => {
   const theme = useTheme() as MyMD3Theme;
-  const styles = getStyles();
+  const styles = useGetStyles();
   const { apiRegion } = useAuth();
 
   const [inputMessage, setInputMessage] = useState(

@@ -10,7 +10,7 @@ import {
 } from '../../providers/Social/feed-sdk';
 import useAuth from '../../hooks/useAuth';
 import PostList, { type IPost } from '../../components/Social/PostList';
-import { getStyles } from './styles';
+import { useGetStyles } from './styles';
 import MyCommunity from '../../components/MyCommunity';
 
 import { amityPostsFormatter } from '../../util/postDataFormatter';
@@ -18,6 +18,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import globalFeedSlice from '../../redux/slices/globalfeedSlice';
 import { RootState } from 'src/redux/store';
 import { useFocusEffect } from '@react-navigation/native';
+import { amityUIKitTokens } from '@amityco/asc-react-native-ui-kit';
 
 export default function GlobalFeed() {
   const { postList } = useSelector((state: RootState) => state.globalFeed);
@@ -25,7 +26,7 @@ export default function GlobalFeed() {
   const { updateGlobalFeed, deleteByPostId } = globalFeedSlice.actions;
   const dispatch = useDispatch(); // ()=> dispatch(updateGlobalFeed())
 
-  const styles = getStyles();
+  const styles = useGetStyles();
   const { isConnected } = useAuth();
   const [postData, setPostData] = useState<IGlobalFeedRes>();
 
@@ -76,25 +77,24 @@ export default function GlobalFeed() {
 
   return (
     <View style={styles.feedWrap}>
-      <View style={styles.feedWrap}>
-        <FlatList
-          data={postList}
-          renderItem={({ item, index }) => (
-            <PostList
-              onDelete={onDeletePost}
-              postDetail={item}
-              onChange={onPostChange}
-              postIndex={index}
-            />
-          )}
-          keyExtractor={(item) => item.postId.toString()}
-          onEndReachedThreshold={0.5}
-          onEndReached={handleLoadMore}
-          ref={flatListRef}
-          ListHeaderComponent={<MyCommunity />}
-          extraData={postList}
-        />
-      </View>
+      <FlatList
+        contentContainerStyle={{ paddingBottom: amityUIKitTokens.spacing.xl3 }}
+        data={postList}
+        renderItem={({ item, index }) => (
+          <PostList
+            onDelete={onDeletePost}
+            postDetail={item}
+            onChange={onPostChange}
+            postIndex={index}
+          />
+        )}
+        keyExtractor={(item) => item.postId.toString()}
+        onEndReachedThreshold={0.5}
+        onEndReached={handleLoadMore}
+        ref={flatListRef}
+        ListHeaderComponent={<MyCommunity />}
+        extraData={postList}
+      />
     </View>
   );
 }
