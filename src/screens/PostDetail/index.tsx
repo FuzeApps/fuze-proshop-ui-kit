@@ -433,7 +433,7 @@ const PostDetail = () => {
             }
             value={inputMessage}
             onChangeText={(text) => setInputMessage(text)}
-            placeholderTextColor={theme.colors.baseShade3}
+            placeholderTextColor={theme.colors.baseShade2}
             onSelectionChange={handleSelectionChange}
           />
           {mentionNames.length > 0 && (

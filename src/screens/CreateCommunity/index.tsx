@@ -209,7 +209,7 @@ export default function CreateCommunity() {
             <TextInput
               style={styles.inputField}
               placeholder="Name your community"
-              placeholderTextColor={theme.colors.baseShade3}
+              placeholderTextColor={theme.colors.baseShade2}
               value={communityName}
               onChangeText={(text) => setCommunityName(text)}
               maxLength={MAX_COMMUNITY_NAME_LENGTH}
@@ -227,7 +227,7 @@ export default function CreateCommunity() {
             <TextInput
               style={styles.inputField}
               placeholder="Enter description"
-              placeholderTextColor={theme.colors.baseShade3}
+              placeholderTextColor={theme.colors.baseShade2}
               value={aboutText}
               onChangeText={(text) => setAboutText(text)}
               maxLength={MAX_ABOUT_TEXT_LENGTH}

@@ -19,6 +19,8 @@ import { LoadingOverlay } from '../../components/LoadingOverlay/index';
 import { UserRepository } from '@amityco/ts-sdk-react-native';
 import useAuth from '../../hooks/useAuth';
 import * as ImagePicker from 'expo-image-picker';
+import { useTheme } from 'react-native-paper';
+import { MyMD3Theme } from '~/providers/amity-ui-kit-provider';
 interface EditProfileProps {
   navigation: any;
   route: any;
@@ -28,6 +30,7 @@ export const EditProfile: React.FC<EditProfileProps> = ({
   navigation,
   route,
 }) => {
+  const theme = useTheme() as MyMD3Theme;
   const styles = useGetStyles();
   const MAX_CHARACTER_COUNT = 100;
   const { apiRegion } = useAuth();
@@ -203,7 +206,7 @@ export const EditProfile: React.FC<EditProfileProps> = ({
         onChangeText={handleDisplayNameTextChange}
         maxLength={MAX_CHARACTER_COUNT}
         placeholder=""
-        placeholderTextColor="#a0a0a0"
+        placeholderTextColor={theme.colors.baseShade2}
       />
       <View style={styles.displayNameContainer}>
         <Text style={styles.displayNameText}>About</Text>
@@ -219,7 +222,7 @@ export const EditProfile: React.FC<EditProfileProps> = ({
         onChangeText={handleAboutTextChange}
         maxLength={MAX_CHARACTER_COUNT}
         placeholder=""
-        placeholderTextColor="#a0a0a0"
+        placeholderTextColor={theme.colors.baseShade2}
       />
     </View>
   );
