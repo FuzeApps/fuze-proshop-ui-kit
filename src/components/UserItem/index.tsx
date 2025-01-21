@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import { Image, Text, TouchableOpacity, View } from 'react-native';
-import { useGetStyles } from './styles';
-import RoundCheckbox from '../RoundCheckbox/index';
+import { SvgXml } from 'react-native-svg';
 import type { UserInterface } from 'src/types/user.interface';
 import useAuth from '../../hooks/useAuth';
+import { kebabMenu } from '../../svg/svg-xml-list';
+import RoundCheckbox from '../RoundCheckbox/index';
+import { useGetStyles } from './styles';
 
 export default function UserItem({
   user,
@@ -67,10 +69,7 @@ export default function UserItem({
             }
           }}
         >
-          <Image
-            source={require('../../../assets/icon/threeDot.png')}
-            style={styles.dotIcon}
-          />
+          <SvgXml xml={kebabMenu()} width={24} />
         </TouchableOpacity>
       )}
     </TouchableOpacity>

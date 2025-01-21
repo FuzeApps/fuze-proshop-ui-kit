@@ -101,6 +101,7 @@ const colors: CustomColors = {
   background: '#2c3748',
   border: '#182230',
   screenBackground: '#182230',
+  alert: '#FA4D30',
 };
 
 export const amityUIKitTokens = {

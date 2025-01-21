@@ -171,6 +171,7 @@ export default function CommunityHome({ route }: any) {
       communityName: communityName,
     });
   };
+
   function triggerLoadMoreFunction() {
     if (feedRef.current) {
       feedRef.current.handleLoadMore(); // Call the function inside the child component
@@ -262,7 +263,7 @@ export default function CommunityHome({ route }: any) {
                 ? {
                     uri: avatarUrl,
                   }
-                : require('../../../assets/icon/Placeholder.png')
+                : require('../../../assets/icon/community-background-placeholder.png')
             }
           />
           <View style={styles.darkOverlay} />

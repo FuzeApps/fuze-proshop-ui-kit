@@ -22,7 +22,7 @@ import { useNavigation } from '@react-navigation/native';
 import type { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import useAuth from '../../hooks/useAuth';
 import { SvgXml } from 'react-native-svg';
-import { editIcon } from '../../svg/svg-xml-list';
+import { editIcon, kebabMenu } from '../../svg/svg-xml-list';
 import type { MyMD3Theme } from '../../providers/amity-ui-kit-provider';
 import { useTheme } from 'react-native-paper';
 import FloatingButton from '../../components/FloatingButton';
@@ -76,10 +76,7 @@ export default function UserProfile({ route }: any) {
             });
           }}
         >
-          <Image
-            source={require('../../../assets/icon/threeDot.png')}
-            style={styles.dotIcon}
-          />
+          <SvgXml xml={kebabMenu()} width={24} />
         </TouchableOpacity>
       ),
     });

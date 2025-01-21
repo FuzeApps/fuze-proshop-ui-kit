@@ -32,7 +32,7 @@ export const useGetStyles = () => {
       paddingTop: 10,
       alignItems: 'center',
       borderTopWidth: 1,
-      borderTopColor: theme.colors.border,
+      borderTopColor: theme.colors.baseShade3,
     },
     postDisabledBtn: {
       color: '#A0BDF8',
@@ -48,14 +48,14 @@ export const useGetStyles = () => {
     commentItem: {
       padding: 16,
       borderBottomWidth: 1,
-      borderBottomColor: theme.colors.border,
+      borderTopColor: theme.colors.baseShade3,
     },
     comment: {
       fontSize: 14,
     },
     commentListWrap: {
       borderTopWidth: 1,
-      borderTopColor: theme.colors.border,
+      borderTopColor: theme.colors.baseShade3,
     },
     textInput: {
       borderWidth: 0,
@@ -67,7 +67,7 @@ export const useGetStyles = () => {
       paddingTop: 0,
       width: '100%',
       borderRadius: 20,
-
+      color: theme.colors.base,
       // Additional styles if needed
     },
     transparentText: {

@@ -10,7 +10,7 @@ export const useGetStyles = () => {
       backgroundColor: theme.colors.background,
       paddingHorizontal: 12,
       width: '100%',
-      borderBottomColor: '#EBECEF',
+      borderBottomColor: theme.colors.baseShade3,
       borderBottomWidth: 1,
       alignSelf: 'center',
     },

@@ -16,7 +16,7 @@ export const useGetStyles = () => {
       alignItems: 'center',
       paddingHorizontal: 15,
       borderBottomWidth: 1,
-      borderBottomColor: '#DDDDDD',
+      borderBottomColor: theme.colors.baseShade3,
     },
     backIcon: {
       width: 25,
@@ -37,13 +37,13 @@ export const useGetStyles = () => {
       paddingVertical: 15,
       paddingHorizontal: 16,
       borderBottomWidth: 1,
-      borderBottomColor: '#DDDDDD',
+      borderBottomColor: theme.colors.baseShade3,
     },
     iconContainer: {
       width: 28,
       height: 28,
       borderRadius: 4,
-      backgroundColor: '#EFEFEF',
+      backgroundColor: theme.colors.baseShade4,
       justifyContent: 'center',
       alignItems: 'center',
       marginRight: 15,
@@ -72,12 +72,12 @@ export const useGetStyles = () => {
     leaveChatText: {
       fontSize: 16,
       fontWeight: '600',
-      color: '#FF0000',
+      // color: theme.colors.error,
     },
     leaveChatLabel: {
       fontSize: 16,
       fontWeight: '600',
-      color: 'red',
+      color: theme.colors.alert,
     },
   });
 

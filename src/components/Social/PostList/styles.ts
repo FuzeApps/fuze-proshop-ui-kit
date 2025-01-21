@@ -60,11 +60,10 @@ export const useGetStyles = () => {
       color: theme.colors.base,
     },
     actionSection: {
-      borderTopColor: theme.colors.border,
+      borderTopColor: theme.colors.baseShade3,
       borderTopWidth: 1,
       flexDirection: 'row',
       marginTop: 8,
-      marginBottom: 4,
     },
     likeBtn: {
       flexDirection: 'row',

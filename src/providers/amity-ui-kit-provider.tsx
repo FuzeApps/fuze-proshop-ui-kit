@@ -40,6 +40,7 @@ export interface CustomColors {
   background?: string;
   border?: string;
   screenBackground?: string;
+  alert?: string;
 }
 export interface MyMD3Theme extends MD3Theme {
   colors: MD3Theme['colors'] & CustomColors;

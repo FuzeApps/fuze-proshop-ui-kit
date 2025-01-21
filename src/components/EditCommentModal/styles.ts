@@ -19,6 +19,7 @@ export const useGetStyles = () => {
       flexDirection: 'row',
       alignItems: 'center',
       justifyContent: 'space-between',
+      backgroundColor: theme.colors.background,
     },
     closeButton: {
       zIndex: 1,
