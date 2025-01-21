@@ -89,7 +89,7 @@ export default function MyCommunity() {
             <SvgXml
               width={15}
               height={15}
-              xml={arrowOutlined(theme.colors.base)}
+              xml={arrowOutlined(theme.colors.baseShade3)}
             />
           </View>
           <Text style={styles.seeAllText}>See all</Text>

@@ -77,7 +77,7 @@ export default function SocialNavigator() {
                   />
                 </TouchableOpacity>
               ),
-              headerTitle: 'Community',
+              headerTitle: 'Clubhouse',
             })}
           />
           {/* <Stack.Screen name="Community" component={Home} /> */}

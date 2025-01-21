@@ -1,5 +1,5 @@
 export enum TabName {
-  NewsFeed = 'NewsFeed',
+  Activity = 'Activity',
   Explorer = 'Explore',
   Timeline = 'Timeline',
   Gallery = 'Gallery',

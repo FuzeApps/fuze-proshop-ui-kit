@@ -1,6 +1,9 @@
 import { StyleSheet } from 'react-native';
 import { useTheme } from 'react-native-paper';
 import type { MyMD3Theme } from 'src/providers/amity-ui-kit-provider';
+
+const AVATAR_DIAMETER = 72;
+
 export const useStyle = () => {
   const theme = useTheme() as MyMD3Theme;
 
@@ -8,7 +11,6 @@ export const useStyle = () => {
     container: {
       backgroundColor: theme.colors.background,
       paddingVertical: 16,
-      paddingLeft: 16,
     },
     title: {
       fontSize: 17,
@@ -19,16 +21,17 @@ export const useStyle = () => {
     scrollView: {
       paddingTop: 16,
       justifyContent: 'space-between',
+      paddingStart: 16,
     },
     itemContainer: {
       alignItems: 'center',
-      marginRight: 10,
-      width: 68,
+      marginEnd: 16,
+      width: AVATAR_DIAMETER,
     },
     avatar: {
-      width: 40,
-      height: 40,
-      borderRadius: 25,
+      width: AVATAR_DIAMETER,
+      height: AVATAR_DIAMETER,
+      borderRadius: 1000,
     },
     itemText: {
       fontSize: 12,
@@ -43,6 +46,7 @@ export const useStyle = () => {
     titleContainer: {
       flexDirection: 'row',
       justifyContent: 'space-between',
+      paddingStart: 16,
     },
     arrowIcon: {
       marginRight: 16,
@@ -52,16 +56,23 @@ export const useStyle = () => {
       marginRight: 16,
     },
     seeAllIcon: {
-      width: 40,
-      height: 40,
-      borderRadius: 25,
-      backgroundColor: '#ededed',
+      width: AVATAR_DIAMETER,
+      height: AVATAR_DIAMETER,
+      borderRadius: 1000,
+      backgroundColor: theme.colors.baseShade1,
       alignItems: 'center',
       justifyContent: 'center',
     },
     seeAllText: {
       fontSize: 13,
       marginTop: 6,
+      color: theme.colors.base,
+      textAlign: 'center',
+    },
+    isOfficialIcon: {
+      position: 'absolute',
+      bottom: 16,
+      right: 0,
     },
   });
 

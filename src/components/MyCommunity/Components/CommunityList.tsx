@@ -57,23 +57,28 @@ const CommunityList = ({
           xml={communityIcon}
         />
       )}
+
+      {item.isOfficial && (
+        <View style={styles.isOfficialIcon}>
+          <SvgXml
+            width={24}
+            height={24}
+            xml={officialIcon(theme.colors.primary)}
+          />
+        </View>
+      )}
       <View style={styles.textRow}>
         {!item.isPublic && (
           <SvgXml width={17} height={17} xml={privateIcon(theme.colors.base)} />
         )}
-        <Text style={styles.itemText}>
-          {getDisplayName({
+        <Text numberOfLines={1} style={styles.itemText}>
+          {/* {getDisplayName({
             text: item.displayName,
             type: !item.isPublic ? PrivacyState.private : PrivacyState.public,
-          })}
+          })} */}
+
+          {item.displayName}
         </Text>
-        {item.isOfficial && (
-          <SvgXml
-            width={20}
-            height={20}
-            xml={officialIcon(theme.colors.primary)}
-          />
-        )}
       </View>
     </TouchableOpacity>
   );

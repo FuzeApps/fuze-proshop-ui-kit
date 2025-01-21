@@ -29,7 +29,7 @@ export default function Home() {
   const styles = getStyles();
   const { client } = useAuth();
   const theme = useTheme() as MyMD3Theme;
-  const [activeTab, setActiveTab] = useState<TabName>(TabName.NewsFeed);
+  const [activeTab, setActiveTab] = useState<TabName>(TabName.Activity);
   const [isVisible, setIsVisible] = useState(false);
 
   const [createPostModalVisible, setCreatePostModalVisible] = useState(false);
@@ -77,10 +77,10 @@ export default function Home() {
   return (
     <View>
       <CustomTab
-        tabName={[TabName.NewsFeed, TabName.Explorer]}
+        tabName={[TabName.Activity, TabName.Explorer]}
         onTabChange={setActiveTab}
       />
-      {activeTab === TabName.NewsFeed ? (
+      {activeTab === TabName.Activity ? (
         <View>
           <GlobalFeed />
           <FloatingButton onPress={openModal} />

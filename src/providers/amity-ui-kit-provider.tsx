@@ -16,14 +16,28 @@ export interface IAmityUIkitProvider {
 }
 
 interface CustomColors {
+  // Primary colors
   primary?: string;
+  primaryShade1?: string;
+  primaryShade2?: string;
+  primaryShade3?: string;
+  primaryShade4?: string;
+
+  // Secondary colors
   secondary?: string;
-  background?: string;
-  border?: string;
+  secondaryShade1?: string;
+  secondaryShade2?: string;
+  secondaryShade3?: string;
+  secondaryShade4?: string;
+
   base?: string;
   baseShade1?: string;
   baseShade2?: string;
   baseShade3?: string;
+  baseShade4?: string;
+
+  background?: string;
+  border?: string;
   screenBackground?: string;
 }
 export interface MyMD3Theme extends MD3Theme {
@@ -34,14 +48,28 @@ const proShopTheme: MyMD3Theme = {
   ...DefaultTheme,
   colors: {
     ...DefaultTheme.colors,
+    // Primary colors
     primary: '#118cf7',
+    primaryShade1: '#0559A3',
+    primaryShade2: '#033B6C',
+    primaryShade3: '#021E36',
+    primaryShade4: '#344054',
+
+    // Secondary colors
     secondary: '#182230',
-    background: '#2c3748',
-    border: '#182230',
+    secondaryShade1: '#344054',
+    secondaryShade2: '#475467',
+    secondaryShade3: '#98A2B3',
+    secondaryShade4: '#667085',
+
     base: '#fcfcfd',
     baseShade1: '#98a2b3',
     baseShade2: '#7f889e',
     baseShade3: '#182230',
+    baseShade4: '#0C111D',
+
+    background: '#2c3748',
+    border: '#182230',
     screenBackground: '#182230',
   },
 };
@@ -77,15 +105,7 @@ export default function AmityUiKitProvider({
     ...DefaultTheme,
     colors: {
       ...DefaultTheme.colors,
-      primary: '#1054DE', // Primary color for main elements
-      secondary: '#636878', // Secondary color UI elements e.g comment bubble, input bar
-      background: '#1E1E1E', // Background color for the overall theme
-      border: '#EBECEF', // Border color for elements
-      base: '#FFFFFF', // Base color for main text, Title, input text
-      baseShade1: '#EBECEF', // Base color for Sub Text, Sub Title, TimeStamp Text
-      baseShade2: '#EBECEF', // Base color for comments, like text
-      baseShade3: '#EBECEF', // Base color for placeHolder
-      screenBackground: '#000000',
+      ...proShopTheme,
     },
   };
 

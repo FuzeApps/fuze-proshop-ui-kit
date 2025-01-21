@@ -9,8 +9,8 @@ export default function App() {
     <AmityUiKitProvider
       apiKey="b0ebe05d6bd8a46d4830de15060017da850bdaeaef676e2a"
       apiRegion="us"
-      userId="Johneric"
-      displayName="Johneric"
+      userId={'robert_plant'}
+      displayName={'Robert'}
       apiEndpoint="https://api.us.amity.co"
     >
       <AmityUiKitSocial />
