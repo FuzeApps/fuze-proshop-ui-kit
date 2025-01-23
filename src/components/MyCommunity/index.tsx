@@ -9,6 +9,7 @@ import type { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import type { MyMD3Theme } from '../../providers/amity-ui-kit-provider';
 import { useTheme } from 'react-native-paper';
 import CommunityList from './Components/CommunityList';
+import { SocialPlusRoutes } from '../../enum';
 
 interface ICommunityItems {
   communityId: string;
@@ -50,13 +51,13 @@ export default function MyCommunity() {
   );
 
   const onClickItem = (communityId: string, displayName: string) => {
-    navigation.navigate('CommunityHome', {
+    navigation.navigate(SocialPlusRoutes.CommunityHome, {
       communityId: communityId,
       communityName: displayName,
     });
   };
   const onClickSeeAll = () => {
-    navigation.navigate('AllMyCommunity');
+    navigation.navigate(SocialPlusRoutes.AllMyCommunity);
   };
   return (
     <View style={styles.container}>

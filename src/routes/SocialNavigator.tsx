@@ -32,6 +32,7 @@ import UserProfile from '../screens/UserProfile/UserProfile';
 import UserProfileSetting from '../screens/UserProfileSetting/UserProfileSetting';
 import { closeIcon, kebabMenu, searchIcon } from '../svg/svg-xml-list';
 import type { RootStackParamList } from './RouteParamList';
+import { SocialPlusRoutes } from '../enum/socialPlusRoutes';
 
 export default function SocialNavigator() {
   const Stack = createNativeStackNavigator<RootStackParamList>();
@@ -41,7 +42,7 @@ export default function SocialNavigator() {
   //   return <PostDetail />;
   // };
   const onClickSearch = (navigation: NativeStackNavigationProp<any>) => {
-    navigation.navigate('CommunitySearch');
+    navigation.navigate(SocialPlusRoutes.CommunitySearch);
   };
   const styles = useStyles();
   return (
@@ -105,7 +106,7 @@ export default function SocialNavigator() {
                 <TouchableOpacity
                   onPress={() => {
                     // Handle button press here
-                    navigation.navigate('CommunitySetting', {
+                    navigation.navigate(SocialPlusRoutes.CommunitySetting, {
                       communityId: communityId,
                       communityName: communityName,
                     });

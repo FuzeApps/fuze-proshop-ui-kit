@@ -44,6 +44,7 @@ import globalFeedSlice from '../../../redux/slices/globalfeedSlice';
 import postDetailSlice from '../../../redux/slices/postDetailSlice';
 import { IMentionPosition } from '../../../screens/CreatePost';
 import type { UserInterface } from '../../../types/user.interface';
+import { SocialPlusRoutes } from '../../../enum';
 
 export interface IPost {
   postId: string;
@@ -302,7 +303,7 @@ export default function PostList({
   }
   const handleDisplayNamePress = () => {
     if (user?.userId) {
-      navigation.navigate('UserProfile', {
+      navigation.navigate(SocialPlusRoutes.UserProfile, {
         userId: user.userId,
       });
     }
@@ -310,7 +311,7 @@ export default function PostList({
 
   const handleCommunityNamePress = () => {
     if (targetType === 'community' && targetId) {
-      navigation.navigate('CommunityHome', {
+      navigation.navigate(SocialPlusRoutes.CommunityHome, {
         communityId: targetId,
         communityName: communityName,
       });
@@ -432,7 +433,7 @@ export default function PostList({
       return <Text style={styles.inputText}>{textPost}</Text>;
     }
     const mentionClick = (userId: string) => {
-      navigation.navigate('UserProfile', {
+      navigation.navigate(SocialPlusRoutes.UserProfile, {
         userId: userId,
       });
     };

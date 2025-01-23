@@ -38,6 +38,7 @@ import type { MyMD3Theme } from '../../providers/amity-ui-kit-provider';
 import * as ImagePicker from 'expo-image-picker';
 import { uploadImageFile } from '../../providers/file-provider';
 import { PrivacyState } from '../../enum/privacyState';
+import { SocialPlusRoutes } from '../../enum';
 
 export default function CreateCommunity() {
   const styles = useGetStyles();
@@ -159,7 +160,7 @@ export default function CreateCommunity() {
       };
       const isCreated = await createCommunity(communityParam);
       if (isCreated) {
-        navigation.navigate('CommunityHome', {
+        navigation.navigate(SocialPlusRoutes.CommunityHome, {
           communityId: isCreated.communityId,
           communityName: isCreated.displayName,
         });

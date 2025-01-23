@@ -28,6 +28,7 @@ import type { MyMD3Theme } from '../../providers/amity-ui-kit-provider';
 import { useTheme } from 'react-native-paper';
 import FloatingButton from '../../components/FloatingButton';
 import { TabName } from '../../enum/tabNameState';
+import { SocialPlusRoutes } from '../../enum';
 
 export default function UserProfile({ route }: any) {
   const theme = useTheme() as MyMD3Theme;
@@ -50,7 +51,7 @@ export default function UserProfile({ route }: any) {
     return `https://api.${apiRegion}.amity.co/api/v3/files/${fileId}/download?size=medium`;
   };
   const onEditProfileTap = () => {
-    navigation.navigate('EditProfile', {
+    navigation.navigate(SocialPlusRoutes.EditProfile, {
       user: user,
     });
   };
@@ -71,7 +72,7 @@ export default function UserProfile({ route }: any) {
         <TouchableOpacity
           onPress={() => {
             // Handle button press here
-            navigation.navigate('UserProfileSetting', {
+            navigation.navigate(SocialPlusRoutes.UserProfileSetting, {
               userId: userId,
               follow: followStatus !== 'loading' ? followStatus : 'loading',
             });
@@ -183,7 +184,7 @@ export default function UserProfile({ route }: any) {
     }
   }
   const handleOnPressPostBtn = () => {
-    navigation.navigate('CreatePost', {
+    navigation.navigate(SocialPlusRoutes.CreatePost, {
       targetId: userId,
       targetName: 'My Timeline',
       targetType: 'user',

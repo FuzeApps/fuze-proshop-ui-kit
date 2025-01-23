@@ -14,6 +14,7 @@ import useAuth from '../../../hooks/useAuth';
 import MediaSection from '../../../components/MediaSection';
 import { IMentionPosition } from '../../../screens/CreatePost';
 import { PostRepository } from '@amityco/ts-sdk-react-native';
+import { SocialPlusRoutes } from '../../../enum';
 
 export interface IPost {
   postId: string;
@@ -132,7 +133,7 @@ export default function PendingPostList({
 
   const handleDisplayNamePress = () => {
     if (user?.userId) {
-      navigation.navigate('UserProfile', {
+      navigation.navigate(SocialPlusRoutes.UserProfile, {
         userId: user.userId,
       });
     }
@@ -143,7 +144,7 @@ export default function PendingPostList({
       return <Text style={styles.inputText}>{textPost}</Text>;
     }
     const mentionClick = (userId: string) => {
-      navigation.navigate('UserProfile', {
+      navigation.navigate(SocialPlusRoutes.UserProfile, {
         userId: userId,
       });
     };

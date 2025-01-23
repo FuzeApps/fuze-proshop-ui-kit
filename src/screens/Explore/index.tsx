@@ -1,18 +1,17 @@
-import * as React from 'react';
 import {
   CategoryRepository,
   CommunityRepository,
-  FileRepository,
 } from '@amityco/ts-sdk-react-native';
-import { useState, useEffect } from 'react';
-// import { useTranslation } from 'react-i18next';
-
-import { View, Text, ScrollView, Image, TouchableOpacity } from 'react-native';
-import { useGetStyles } from './styles';
 import { useNavigation } from '@react-navigation/native';
 import type { NativeStackNavigationProp } from '@react-navigation/native-stack';
+import * as React from 'react';
+import { useEffect, useState } from 'react';
+import { Image, ScrollView, Text, TouchableOpacity, View } from 'react-native';
+import { SvgXml } from 'react-native-svg';
+import { SocialPlusRoutes } from '../../enum';
 import useAuth from '../../hooks/useAuth';
-import useImage from '../../hooks/useImage';
+import { chevronRightIcon } from '../../svg/svg-xml-list';
+import { useGetStyles } from './styles';
 
 export default function Explore() {
   const styles = useGetStyles();
@@ -47,12 +46,15 @@ export default function Explore() {
   };
   const handleCategoryListClick = () => {
     setTimeout(() => {
-      navigation.navigate('CategoryList');
+      navigation.navigate(SocialPlusRoutes.CategoryList);
     }, 100);
   };
   const handleCommunityClick = (communityId: string, communityName: string) => {
     setTimeout(() => {
-      navigation.navigate('CommunityHome', { communityId, communityName });
+      navigation.navigate(SocialPlusRoutes.CommunityHome, {
+        communityId,
+        communityName,
+      });
     }, 100);
   };
   useEffect(() => {
@@ -62,7 +64,10 @@ export default function Explore() {
   }, []);
   const handleCategoryClick = (categoryId: string, categoryName: string) => {
     setTimeout(() => {
-      navigation.navigate('CommunityList', { categoryId, categoryName });
+      navigation.navigate(SocialPlusRoutes.CommunityList, {
+        categoryId,
+        categoryName,
+      });
     }, 100);
   };
   const categoryListComponent = () => {
@@ -208,10 +213,7 @@ export default function Explore() {
         <View style={styles.titleContainer}>
           <Text style={styles.titleText}>Categories</Text>
           <TouchableOpacity onPress={handleCategoryListClick}>
-            <Image
-              source={require('../../../assets/icon/arrowRight.png')}
-              style={styles.arrowIcon}
-            />
+            <SvgXml xml={chevronRightIcon()} />
           </TouchableOpacity>
         </View>
         {categoryListComponent()}

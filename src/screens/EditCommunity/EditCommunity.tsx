@@ -32,6 +32,7 @@ import { getAvatarURL } from '../../util/apiUtil';
 import { updateCommunity } from '../../providers/Social/communities-sdk';
 import { PrivacyState } from '../../enum/privacyState';
 import { useForm, Controller } from 'react-hook-form';
+import { SocialPlusRoutes } from '../../enum';
 
 const EditCommunity = ({ navigation, route }) => {
   const styles = useStyles();
@@ -87,7 +88,7 @@ const EditCommunity = ({ navigation, route }) => {
       } finally {
         setLoading(false);
         navigation.navigate({
-          name: 'CommunityHome',
+          name: SocialPlusRoutes.CommunityHome,
           params: {
             communityId: data.communityId,
             communityName: communityDetail.displayName,

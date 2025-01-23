@@ -25,6 +25,7 @@ import type { ISearchItem } from '../../components/SearchItem';
 import SearchItem from '../../components/SearchItem';
 import { useTheme } from 'react-native-paper';
 import type { MyMD3Theme } from '../../providers/amity-ui-kit-provider';
+import { SocialPlusRoutes } from '../../enum';
 
 export default function AllMyCommunity({ navigation }) {
   const theme = useTheme() as MyMD3Theme;
@@ -39,7 +40,7 @@ export default function AllMyCommunity({ navigation }) {
   const { data: communitiesArr = [], onNextPage } = communities ?? {};
 
   const onClickCreateCommunity = () => {
-    navigation.navigate('CreateCommunity');
+    navigation.navigate(SocialPlusRoutes.CreateCommunity);
   };
 
   const handleChange = (text: string) => {
