@@ -7,6 +7,7 @@ import type { MyMD3Theme } from 'src/providers/amity-ui-kit-provider';
 import CloseButton from '../../components/BackButton';
 import { arrowOutlined, members } from '../../svg/svg-xml-list';
 import { useGetStyles } from './styles';
+import { SocialPlusRoutes } from '../../enum';
 
 interface ChatDetailProps {
   navigation: any;
@@ -28,7 +29,7 @@ export const CommunitySetting: React.FC<ChatDetailProps> = ({
     });
   }, []);
   const handleMembersPress = () => {
-    navigation.navigate('CommunityMemberDetail', {
+    navigation.navigate(SocialPlusRoutes.CommunityMemberDetail, {
       communityId: communityId,
     });
   };

@@ -2,14 +2,16 @@ import {
   CategoryRepository,
   CommunityRepository,
 } from '@amityco/ts-sdk-react-native';
-import * as React from 'react';
-import { useEffect, useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
 import type { NativeStackNavigationProp } from '@react-navigation/native-stack';
+import * as React from 'react';
+import { useEffect, useState } from 'react';
 import { Image, ScrollView, Text, TouchableOpacity, View } from 'react-native';
+import { SvgXml } from 'react-native-svg';
+import { SocialPlusRoutes } from '../../enum';
 import useAuth from '../../hooks/useAuth';
+import { chevronRightIcon } from '../../svg/svg-xml-list';
 import { useGetStyles } from './styles';
-import { SocialPlusRoutes } from 'lib/typescript/src';
 
 export default function Explore() {
   const styles = useGetStyles();
@@ -44,7 +46,7 @@ export default function Explore() {
   };
   const handleCategoryListClick = () => {
     setTimeout(() => {
-      navigation.navigate('CategoryList');
+      navigation.navigate(SocialPlusRoutes.CategoryList);
     }, 100);
   };
   const handleCommunityClick = (communityId: string, communityName: string) => {
@@ -62,7 +64,10 @@ export default function Explore() {
   }, []);
   const handleCategoryClick = (categoryId: string, categoryName: string) => {
     setTimeout(() => {
-      navigation.navigate('CommunityList', { categoryId, categoryName });
+      navigation.navigate(SocialPlusRoutes.CommunityList, {
+        categoryId,
+        categoryName,
+      });
     }, 100);
   };
   const categoryListComponent = () => {
@@ -208,10 +213,7 @@ export default function Explore() {
         <View style={styles.titleContainer}>
           <Text style={styles.titleText}>Categories</Text>
           <TouchableOpacity onPress={handleCategoryListClick}>
-            <Image
-              source={require('../../../assets/icon/arrowRight.png')}
-              style={styles.arrowIcon}
-            />
+            <SvgXml xml={chevronRightIcon()} />
           </TouchableOpacity>
         </View>
         {categoryListComponent()}

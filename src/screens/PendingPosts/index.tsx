@@ -10,8 +10,10 @@ import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { amityPostsFormatter } from '../../util/postDataFormatter';
 import { IPost } from '../../components/Social/PostList';
 import PendingPostList from '../../components/Social/PendingPostList';
+import { SocialPlusRoutes } from '../../enum';
 export default function PendingPosts() {
-  const route = useRoute<RouteProp<RootStackParamList, 'PendingPosts'>>();
+  const route =
+    useRoute<RouteProp<RootStackParamList, SocialPlusRoutes.PendingPosts>>();
 
   const { communityId, isModerator } = route.params;
   const [postList, setPostList] = useState<IPost[]>([]);

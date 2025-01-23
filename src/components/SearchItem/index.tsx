@@ -7,7 +7,7 @@ import { communityIcon, userIcon } from '../../svg/svg-xml-list';
 import { CategoryRepository } from '@amityco/ts-sdk-react-native';
 import { useNavigation } from '@react-navigation/native';
 import useAuth from '../../hooks/useAuth';
-import { SocialPlusRoutes } from 'lib/typescript/src';
+import { SocialPlusRoutes } from '../../enum';
 export interface ISearchItem {
   targetId: string;
   targetType: string;
@@ -42,7 +42,7 @@ export default function SearchItem({
           communityName: target.displayName,
         });
       } else {
-        navigation.navigate('UserProfile', {
+        navigation.navigate(SocialPlusRoutes.UserProfile, {
           userId: target.targetId,
         });
       }

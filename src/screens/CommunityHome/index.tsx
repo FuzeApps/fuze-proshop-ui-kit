@@ -37,8 +37,7 @@ import { useFocusEffect, useNavigation } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import FloatingButton from '../../components/FloatingButton';
 import useImage from '../../hooks/useImage';
-import { TabName } from '../../enum/tabNameState';
-import { SocialPlusRoutes } from 'lib/typescript/src';
+import { TabName, SocialPlusRoutes } from '../../enum';
 
 export type FeedRefType = {
   handleLoadMore: () => void;
@@ -167,7 +166,7 @@ export default function CommunityHome({ route }: any) {
   };
 
   const handleMembersPress = () => {
-    navigation.navigate('CommunityMemberDetail', {
+    navigation.navigate(SocialPlusRoutes.CommunityMemberDetail, {
       communityId: communityId,
       communityName: communityName,
     });
@@ -207,7 +206,7 @@ export default function CommunityHome({ route }: any) {
   };
 
   const handleClickPendingArea = () => {
-    navigation.navigate('PendingPosts', {
+    navigation.navigate(SocialPlusRoutes.PendingPosts, {
       communityId: communityId,
       isModerator: isUserHasPermission,
     });
@@ -243,7 +242,7 @@ export default function CommunityHome({ route }: any) {
   };
 
   const onEditProfileTap = () => {
-    navigation.navigate('EditCommunity', {
+    navigation.navigate(SocialPlusRoutes.EditCommunity, {
       communityData,
     });
   };

@@ -41,6 +41,7 @@ import { useTheme } from 'react-native-paper';
 import type { MyMD3Theme } from '../../../providers/amity-ui-kit-provider';
 import { IMentionPosition } from '../../../screens/CreatePost';
 import { useNavigation } from '@react-navigation/native';
+import { SocialPlusRoutes } from '../../../enum';
 
 export interface IComment {
   commentId: string;
@@ -284,7 +285,7 @@ export default function CommentList({
       return <Text style={styles.inputText}>{textComment}</Text>;
     }
     const mentionClick = (userId: string) => {
-      navigation.navigate('UserProfile', {
+      navigation.navigate(SocialPlusRoutes.UserProfile, {
         userId: userId,
       });
     };

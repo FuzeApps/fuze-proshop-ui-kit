@@ -11,6 +11,7 @@ import {
 import { useGetStyles } from './styles';
 import CloseButton from '../../components/BackButton';
 import useAuth from '../../hooks/useAuth';
+import { SocialPlusRoutes } from '../../enum';
 
 export default function CategoryList({ navigation }: any) {
   const { apiRegion } = useAuth();
@@ -59,7 +60,10 @@ export default function CategoryList({ navigation }: any) {
   }, []);
   const handleCategoryClick = (categoryId: string, categoryName: string) => {
     setTimeout(() => {
-      navigation.navigate('CommunityList', { categoryId, categoryName });
+      navigation.navigate(SocialPlusRoutes.CommunityList, {
+        categoryId,
+        categoryName,
+      });
     }, 100);
   };
   const renderCategory = ({ item }: { item: Amity.Category }) => {

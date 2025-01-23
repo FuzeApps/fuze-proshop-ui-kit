@@ -32,7 +32,7 @@ import { getAvatarURL } from '../../util/apiUtil';
 import { updateCommunity } from '../../providers/Social/communities-sdk';
 import { PrivacyState } from '../../enum/privacyState';
 import { useForm, Controller } from 'react-hook-form';
-import { SocialPlusRoutes } from 'lib/typescript/src';
+import { SocialPlusRoutes } from '../../enum';
 
 const EditCommunity = ({ navigation, route }) => {
   const styles = useStyles();

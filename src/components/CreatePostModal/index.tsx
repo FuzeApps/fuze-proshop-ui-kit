@@ -18,7 +18,7 @@ import useAuth from '../../hooks/useAuth';
 import { useGetStyles } from './styles';
 import { useTheme } from 'react-native-paper';
 import type { MyMD3Theme } from '../../providers/amity-ui-kit-provider';
-import { SocialPlusRoutes } from 'lib/typescript/src';
+import { SocialPlusRoutes } from '../../enum';
 interface IModal {
   visible: boolean;
   userId?: string;
