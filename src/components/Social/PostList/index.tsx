@@ -481,18 +481,20 @@ export default function PostList({
     <View key={postId} style={styles.postWrap}>
       <View style={styles.headerSection}>
         <View style={styles.user}>
-          {user?.avatarFileId ? (
-            <Image
-              style={styles.avatar}
-              source={{
-                uri: `https://api.${apiRegion}.amity.co/api/v3/files/${user?.avatarFileId}/download`,
-              }}
-            />
-          ) : (
-            <View style={styles.avatar}>
-              <SvgXml xml={personXml} width="20" height="16" />
-            </View>
-          )}
+          <TouchableWithoutFeedback onPress={handleDisplayNamePress}>
+            {user?.avatarFileId ? (
+              <Image
+                style={styles.avatar}
+                source={{
+                  uri: `https://api.${apiRegion}.amity.co/api/v3/files/${user?.avatarFileId}/download`,
+                }}
+              />
+            ) : (
+              <View style={styles.avatar}>
+                <SvgXml xml={personXml} width="20" height="16" />
+              </View>
+            )}
+          </TouchableWithoutFeedback>
 
           <View style={styles.flex}>
             <View style={styles.headerRow}>

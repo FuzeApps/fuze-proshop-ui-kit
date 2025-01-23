@@ -3,6 +3,8 @@ import { View, Text, FlatList, TouchableOpacity, Image } from 'react-native';
 import { UserRepository, createReport } from '@amityco/ts-sdk-react-native';
 import CloseButton from '../../components/BackButton';
 import { styles } from './styles';
+import { SvgXml } from 'react-native-svg';
+import { members } from '../../svg/svg-xml-list';
 
 export default function UserProfileSetting({ navigation, route }: any) {
   const { userId, follow } = route.params;
@@ -58,10 +60,7 @@ export default function UserProfileSetting({ navigation, route }: any) {
             onPress={handleReportUserPress}
           >
             <View style={styles.iconContainer}>
-              <Image
-                source={require('../../../assets/icon/report.png')}
-                style={styles.groupIcon}
-              />
+              <SvgXml xml={members()} width={24} />
             </View>
             <Text style={styles.rowText}>Report user</Text>
             {/* <Image

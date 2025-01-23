@@ -86,9 +86,7 @@ export default function Home() {
           <FloatingButton onPress={openModal} />
         </View>
       ) : (
-        <View>
-          <Explore />
-        </View>
+        <Explore />
       )}
       <Modal
         animationType="fade"

@@ -1,6 +1,7 @@
 import { StyleSheet } from 'react-native';
 import { useTheme } from 'react-native-paper';
 import type { MyMD3Theme } from 'src/providers/amity-ui-kit-provider';
+import { amityUIKitTokens } from '../../enum/tokens';
 
 export const useGetStyles = () => {
   const theme = useTheme() as MyMD3Theme;
@@ -133,6 +134,22 @@ export const useGetStyles = () => {
       marginLeft: 10,
       marginBottom: 10,
       color: theme.colors.base,
+    },
+    recommendedAvatar: {
+      width: '100%',
+      minHeight: 110,
+    },
+    recommendedCard: {
+      width: 175,
+      backgroundColor: theme.colors.background,
+      borderRadius: amityUIKitTokens.borderRadius.medium,
+      marginRight: 10,
+      marginBottom: 10,
+      overflow: 'hidden',
+      height: 250,
+    },
+    cardBody: {
+      padding: amityUIKitTokens.spacing.m1,
     },
   });
   return styles;

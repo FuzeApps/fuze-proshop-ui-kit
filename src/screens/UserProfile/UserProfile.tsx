@@ -3,6 +3,7 @@ import React, {
   useEffect,
   useRef,
   type MutableRefObject,
+  useMemo,
 } from 'react';
 import {
   View,
@@ -125,7 +126,8 @@ export default function UserProfile({ route }: any) {
     // Return the function to unsubscribe from the event so it gets removed on unmount
     return unsubscribe;
   }, [navigation, userId]);
-  const editProfileButton = () => {
+
+  const editProfileButton = useMemo(() => {
     return (
       <TouchableOpacity
         style={styles.editProfileButton}
@@ -135,8 +137,14 @@ export default function UserProfile({ route }: any) {
         <Text style={styles.editProfileText}>Edit Profile</Text>
       </TouchableOpacity>
     );
-  };
-  const followButton = () => {
+  }, [
+    onEditProfileTap,
+    styles.editProfileButton,
+    styles.editProfileText,
+    theme.colors.base,
+  ]);
+
+  const followButton = useMemo(() => {
     return (
       <TouchableOpacity style={styles.followButton} onPress={onFollowTap}>
         <Image
@@ -146,7 +154,15 @@ export default function UserProfile({ route }: any) {
         <Text style={styles.followText}>Follow</Text>
       </TouchableOpacity>
     );
-  };
+  }, [onFollowTap, styles.followButton, styles.followIcon, styles.followText]);
+
+  const goToMyProsShopButton = useMemo(() => {
+    return (
+      <TouchableOpacity style={styles.followButton} onPress={onFollowTap}>
+        <Text style={styles.followText}>Visit My ProShop Page</Text>
+      </TouchableOpacity>
+    );
+  }, [onFollowTap, styles.followButton, styles.followText]);
 
   const handleTab = (tabName: TabName) => {
     console.log('index: ', tabName); //this func not implmented yet
@@ -215,12 +231,15 @@ export default function UserProfile({ route }: any) {
           </View>
 
           {followStatus === 'none' ? (
-            followButton()
+            followButton
           ) : followStatus === undefined ? ( // userID is the current user ID
-            editProfileButton()
+            editProfileButton
           ) : (
             <View />
           )}
+          <View style={styles.separator} />
+          {/* TODO: revisit this */}
+          {goToMyProsShopButton}
         </View>
         <CustomTab
           tabName={[TabName.Timeline, TabName.Gallery]}

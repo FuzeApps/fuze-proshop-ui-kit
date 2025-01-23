@@ -71,7 +71,11 @@ const spacing = {
   xl3: 96,
 };
 
-const borderRadius = {};
+const borderRadius = {
+  small: 4,
+  medium: 8,
+  large: 12,
+};
 
 const colors: CustomColors = {
   /**

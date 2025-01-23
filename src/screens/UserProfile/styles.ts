@@ -109,6 +109,9 @@ export const useGetStyles = () => {
       fontWeight: '600',
       color: theme.colors.base,
     },
+    separator: {
+      height: 16,
+    },
   });
 
   return styles;

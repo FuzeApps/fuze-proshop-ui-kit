@@ -2,6 +2,7 @@ import * as React from 'react';
 import {
   CategoryRepository,
   CommunityRepository,
+  FileRepository,
 } from '@amityco/ts-sdk-react-native';
 import { useState, useEffect } from 'react';
 // import { useTranslation } from 'react-i18next';
@@ -11,6 +12,7 @@ import { useGetStyles } from './styles';
 import { useNavigation } from '@react-navigation/native';
 import type { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import useAuth from '../../hooks/useAuth';
+import useImage from '../../hooks/useImage';
 
 export default function Explore() {
   const styles = useGetStyles();
@@ -130,8 +132,8 @@ export default function Explore() {
         <ScrollView horizontal showsHorizontalScrollIndicator={false}>
           {recommendCommunityList.map((community) => (
             <TouchableOpacity
+              style={styles.recommendedCard}
               key={community.communityId}
-              style={styles.card}
               onPress={() =>
                 handleCommunityClick(
                   community.communityId,
@@ -139,17 +141,24 @@ export default function Explore() {
                 )
               }
             >
+              {/* TODO: find a way to include higher resolution */}
               <Image
-                style={styles.avatar}
+                style={styles.recommendedAvatar}
                 source={{
                   uri: `https://api.${apiRegion}.amity.co/api/v3/files/${community.avatarFileId}/download`,
                 }}
               />
-              <Text style={styles.name}>{community.displayName}</Text>
-              <Text style={styles.recommendSubDetail}>
-                {community.membersCount} members
-              </Text>
-              <Text style={styles.bio}>{community.description}</Text>
+              <View style={styles.cardBody}>
+                <Text numberOfLines={2} style={styles.name}>
+                  {community.displayName}
+                </Text>
+                <Text style={styles.recommendSubDetail}>
+                  {community.membersCount} members
+                </Text>
+                <Text numberOfLines={3} style={styles.bio}>
+                  {community.description}
+                </Text>
+              </View>
             </TouchableOpacity>
           ))}
         </ScrollView>

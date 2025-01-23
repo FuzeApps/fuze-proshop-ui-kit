@@ -3,11 +3,12 @@ import { StyleSheet } from 'react-native';
 export const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#FFFFFF',
+    // backgroundColor: amityUIKitTokens.colors.background,
+    backgroundColor: 'orange',
   },
   navBar: {
     height: 60,
-    backgroundColor: '#F5F5F5',
+    backgroundColor: 'red',
     flexDirection: 'row',
     alignItems: 'center',
     paddingHorizontal: 15,
