@@ -18,6 +18,7 @@ import useAuth from '../../hooks/useAuth';
 import { useGetStyles } from './styles';
 import { useTheme } from 'react-native-paper';
 import type { MyMD3Theme } from '../../providers/amity-ui-kit-provider';
+import { SocialPlusRoutes } from 'lib/typescript/src';
 interface IModal {
   visible: boolean;
   userId?: string;
@@ -108,7 +109,7 @@ const CreatePostModal = ({ visible, onClose, userId, onSelect }: IModal) => {
     targetType: string
   ) => {
     onSelect && onSelect();
-    navigation.navigate('CreatePost', {
+    navigation.navigate(SocialPlusRoutes.CreatePost, {
       targetId: targetId,
       targetName: targetName,
       targetType: targetType,

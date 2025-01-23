@@ -28,6 +28,7 @@ import type { MyMD3Theme } from '../../providers/amity-ui-kit-provider';
 import { useTheme } from 'react-native-paper';
 import FloatingButton from '../../components/FloatingButton';
 import { TabName } from '../../enum/tabNameState';
+import { SocialPlusRoutes } from 'lib/typescript/src';
 
 export default function UserProfile({ route }: any) {
   const theme = useTheme() as MyMD3Theme;
@@ -183,7 +184,7 @@ export default function UserProfile({ route }: any) {
     }
   }
   const handleOnPressPostBtn = () => {
-    navigation.navigate('CreatePost', {
+    navigation.navigate(SocialPlusRoutes.CreatePost, {
       targetId: userId,
       targetName: 'My Timeline',
       targetType: 'user',

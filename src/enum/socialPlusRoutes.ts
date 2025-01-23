@@ -1,0 +1,17 @@
+export enum SocialPlusRoutes {
+  CreatePost = 'CreatePost',
+  CommunityHome = 'CommunityHome',
+  AllMyCommunity = 'AllMyCommunity',
+  UserProfile = 'UserProfile',
+  CommunitySearch = 'CommunitySearch',
+  CommunitySetting = 'CommunitySetting',
+  CreateCommunity = 'CreateCommunity',
+  CommunityList = 'CommunityList',
+  CommunityMemberDetail = 'CommunityMemberDetail',
+  PendingPosts = 'PendingPosts',
+  EditCommunity = 'EditCommunity',
+  CategoryList = 'CategoryList',
+  Home = 'Home',
+  EditProfile = 'EditProfile',
+  UserProfileSetting = 'UserProfileSetting',
+}

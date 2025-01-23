@@ -44,6 +44,7 @@ import globalFeedSlice from '../../../redux/slices/globalfeedSlice';
 import postDetailSlice from '../../../redux/slices/postDetailSlice';
 import { IMentionPosition } from '../../../screens/CreatePost';
 import type { UserInterface } from '../../../types/user.interface';
+import { SocialPlusRoutes } from 'lib/typescript/src';
 
 export interface IPost {
   postId: string;
@@ -310,7 +311,7 @@ export default function PostList({
 
   const handleCommunityNamePress = () => {
     if (targetType === 'community' && targetId) {
-      navigation.navigate('CommunityHome', {
+      navigation.navigate(SocialPlusRoutes.CommunityHome, {
         communityId: targetId,
         communityName: communityName,
       });

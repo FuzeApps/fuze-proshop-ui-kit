@@ -1,18 +1,15 @@
-import * as React from 'react';
 import {
   CategoryRepository,
   CommunityRepository,
-  FileRepository,
 } from '@amityco/ts-sdk-react-native';
-import { useState, useEffect } from 'react';
-// import { useTranslation } from 'react-i18next';
-
-import { View, Text, ScrollView, Image, TouchableOpacity } from 'react-native';
-import { useGetStyles } from './styles';
+import * as React from 'react';
+import { useEffect, useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
 import type { NativeStackNavigationProp } from '@react-navigation/native-stack';
+import { Image, ScrollView, Text, TouchableOpacity, View } from 'react-native';
 import useAuth from '../../hooks/useAuth';
-import useImage from '../../hooks/useImage';
+import { useGetStyles } from './styles';
+import { SocialPlusRoutes } from 'lib/typescript/src';
 
 export default function Explore() {
   const styles = useGetStyles();
@@ -52,7 +49,10 @@ export default function Explore() {
   };
   const handleCommunityClick = (communityId: string, communityName: string) => {
     setTimeout(() => {
-      navigation.navigate('CommunityHome', { communityId, communityName });
+      navigation.navigate(SocialPlusRoutes.CommunityHome, {
+        communityId,
+        communityName,
+      });
     }, 100);
   };
   useEffect(() => {

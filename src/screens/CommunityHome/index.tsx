@@ -38,6 +38,7 @@ import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import FloatingButton from '../../components/FloatingButton';
 import useImage from '../../hooks/useImage';
 import { TabName } from '../../enum/tabNameState';
+import { SocialPlusRoutes } from 'lib/typescript/src';
 
 export type FeedRefType = {
   handleLoadMore: () => void;
@@ -234,7 +235,7 @@ export default function CommunityHome({ route }: any) {
     );
   };
   const handleOnPressPostBtn = () => {
-    navigation.navigate('CreatePost', {
+    navigation.navigate(SocialPlusRoutes.CreatePost, {
       targetId: communityId,
       targetName: communityName,
       targetType: 'community',
