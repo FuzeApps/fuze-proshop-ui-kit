@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import {
   TouchableOpacity,
   View,
@@ -48,7 +48,7 @@ const EditPostModal = ({
   const theme = useTheme() as MyMD3Theme;
   const styles = useGetStyles();
   const { apiRegion } = useAuth();
-
+  const isBusyRef = useRef<Boolean>(false);
   const [inputMessage, setInputMessage] = useState(
     postDetail?.data?.text ?? ''
   );
@@ -109,7 +109,12 @@ const EditPostModal = ({
     }
   };
 
+  // TODO: Add a way to handle busy post.
   const handleEditPost = async () => {
+    if (isBusyRef.current) return;
+
+    isBusyRef.current = true;
+
     if (displayImages.length > 0) {
       const fileIdArr: (string | undefined)[] = displayImages.map(
         (item) => item.fileId
@@ -142,6 +147,7 @@ const EditPostModal = ({
             },
             type
           );
+        isBusyRef.current = false;
       }
     } else {
       const fileIdArr: (string | undefined)[] = displayVideos.map(
@@ -165,6 +171,7 @@ const EditPostModal = ({
             },
             type
           );
+        isBusyRef.current = false;
         handleOnClose();
       }
     }
