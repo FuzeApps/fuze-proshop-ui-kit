@@ -90,7 +90,7 @@ export default function Explore() {
               source={
                 categoryList[index]?.avatarFileId
                   ? {
-                      uri: `https://api.${apiRegion}.amity.co/api/v3/files/${categoryList[index]?.avatarFileId}/download`,
+                      uri: `https://api.${apiRegion}.amity.co/api/v3/files/${categoryList[index]?.avatarFileId}/download?size=small`,
                     }
                   : require('../../../assets/icon/Placeholder.png')
               }
@@ -150,7 +150,7 @@ export default function Explore() {
               <Image
                 style={styles.recommendedAvatar}
                 source={{
-                  uri: `https://api.${apiRegion}.amity.co/api/v3/files/${community.avatarFileId}/download`,
+                  uri: `https://api.${apiRegion}.amity.co/api/v3/files/${community.avatarFileId}/download?size=medium`,
                 }}
               />
               <View style={styles.cardBody}>
@@ -187,7 +187,7 @@ export default function Explore() {
                 source={
                   community.avatarFileId
                     ? {
-                        uri: `https://api.${apiRegion}.amity.co/api/v3/files/${community.avatarFileId}/download`,
+                        uri: `https://api.${apiRegion}.amity.co/api/v3/files/${community.avatarFileId}/download?size=small`,
                       }
                     : require('../../../assets/icon/Placeholder.png')
                 }
