@@ -17,20 +17,20 @@ export const amityPostsFormatter = async (
       };
 
       return {
-        postId: item.postId,
-        data: item.data as Record<string, any>,
-        dataType: item.dataType,
-        myReactions: item.myReactions as string[],
-        reactionCount: item.reactions as Record<string, number>,
-        commentsCount: item.commentsCount,
+        postId: item?.postId,
+        data: item?.data as Record<string, any>,
+        dataType: item?.dataType,
+        myReactions: item?.myReactions as string[],
+        reactionCount: item?.reactions as Record<string, number>,
+        commentsCount: item?.commentsCount,
         user: formattedUserObject as UserInterface,
-        editedAt: item.editedAt,
-        createdAt: item.createdAt,
-        updatedAt: item.updatedAt,
-        targetType: item.targetType,
-        targetId: item.targetId,
-        childrenPosts: item.children,
-        mentionees: item.mentionees[0]?.userIds,
+        editedAt: item?.editedAt,
+        createdAt: item?.createdAt,
+        updatedAt: item?.updatedAt,
+        targetType: item?.targetType,
+        targetId: item?.targetId,
+        childrenPosts: item?.children,
+        mentionees: item?.mentionees[0]?.userIds,
         mentionPosition: item?.metadata?.mentioned || undefined,
       } as IPost;
     })

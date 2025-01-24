@@ -3,33 +3,30 @@ import React, { useCallback, useRef, useState } from 'react';
 // import { useTranslation } from 'react-i18next';
 
 import { FlatList, View } from 'react-native';
+import MyCommunity from '../../components/MyCommunity';
+import PostList, { type IPost } from '../../components/Social/PostList';
+import useAuth from '../../hooks/useAuth';
 import {
   deletePostById,
   getGlobalFeed,
   type IGlobalFeedRes,
 } from '../../providers/Social/feed-sdk';
-import useAuth from '../../hooks/useAuth';
-import PostList, { type IPost } from '../../components/Social/PostList';
 import { useGetStyles } from './styles';
-import MyCommunity from '../../components/MyCommunity';
 
-import { amityPostsFormatter } from '../../util/postDataFormatter';
-import { useDispatch, useSelector } from 'react-redux';
-import globalFeedSlice from '../../redux/slices/globalfeedSlice';
-import { RootState } from 'src/redux/store';
 import { useFocusEffect } from '@react-navigation/native';
-import { amityUIKitTokens } from '@amityco/asc-react-native-ui-kit';
+import { useDispatch, useSelector } from 'react-redux';
+import { amityUIKitTokens } from '../../enum';
+import globalFeedSlice from '../../redux/slices/globalfeedSlice';
+import { RootState } from '../../redux/store';
+import { amityPostsFormatter } from '../../util/postDataFormatter';
 
 export default function GlobalFeed() {
   const { postList } = useSelector((state: RootState) => state.globalFeed);
-
   const { updateGlobalFeed, deleteByPostId } = globalFeedSlice.actions;
   const dispatch = useDispatch(); // ()=> dispatch(updateGlobalFeed())
-
   const styles = useGetStyles();
   const { isConnected } = useAuth();
   const [postData, setPostData] = useState<IGlobalFeedRes>();
-
   const { data: posts = [], nextPage } = postData ?? {};
   const flatListRef = useRef(null);
 
@@ -46,6 +43,7 @@ export default function GlobalFeed() {
       getGlobalFeedList(nextPage);
     }
   };
+
   useFocusEffect(
     useCallback(() => {
       if (isConnected) {
@@ -53,6 +51,7 @@ export default function GlobalFeed() {
       }
     }, [isConnected])
   );
+
   const getPostList = useCallback(async () => {
     if (posts.length > 0) {
       const formattedPostList = await amityPostsFormatter(posts);
