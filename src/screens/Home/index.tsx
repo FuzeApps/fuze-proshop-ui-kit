@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { useEffect, useRef, useState } from 'react';
-// import { useTranslation } from 'react-i18next';
 
 import {
   View,
@@ -22,8 +21,10 @@ import CreatePostModal from '../../components/CreatePostModal';
 import CustomTab from '../../components/CustomTab';
 import { useTheme } from 'react-native-paper';
 import type { MyMD3Theme } from '../../providers/amity-ui-kit-provider';
-import { TabName } from '../../enum/tabNameState';
+import { TabName } from '../../enum';
+
 LogBox.ignoreAllLogs(true);
+
 export default function Home() {
   // const { t, i18n } = useTranslation();
   const styles = useGetStyles();

@@ -4,6 +4,10 @@ import {
   AmityUiKitSocial,
 } from '@amityco/asc-react-native-ui-kit';
 
+if (__DEV__) {
+  require('../ReactotronConfig');
+}
+
 export default function App() {
   return (
     <AmityUiKitProvider

@@ -69,18 +69,20 @@ export default function MediaSection({ childrenPosts }: IMediaSection) {
       const response = await Promise.all(
         childrenPosts.map(async (id) => {
           const { data: post } = await getPostById(id);
-          return { dataType: post.dataType, data: post.data };
+          return { dataType: post?.dataType, data: post.data };
         })
       );
       response.forEach((item) => {
-        if (item.dataType === 'image') {
+        if (item?.dataType === 'image') {
           const url: string = `https://api.${apiRegion}.amity.co/api/v3/files/${item?.data.fileId}/download?size=medium`;
           setImagePosts((prev) => {
             return !prev.includes(url) ? [...prev, url] : [...prev];
           });
-        } else if (item.dataType === 'video') {
+        } else if (item?.dataType === 'video') {
           setVideoPosts((prev) => {
-            return !prev.includes(item.data) ? [...prev, item.data] : [...prev];
+            return !prev.includes(item?.data)
+              ? [...prev, item.data]
+              : [...prev];
           });
         }
       });
@@ -185,7 +187,7 @@ export default function MediaSection({ childrenPosts }: IMediaSection) {
       }
 
       return (
-        <View style={colStyle} key={item}>
+        <View style={colStyle} key={`media-item-${index}-${item}`}>
           <TouchableWithoutFeedback onPress={() => onClickImage(index)}>
             <View>
               {videoPosts.length > 0 && renderPlayButton()}

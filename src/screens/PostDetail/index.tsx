@@ -220,17 +220,17 @@ const PostDetail = () => {
           };
 
           return {
-            commentId: item.commentId,
-            data: item.data as Record<string, any>,
-            dataType: item.dataType || 'text',
-            myReactions: item.myReactions as string[],
-            reactions: item.reactions as Record<string, number>,
+            commentId: item?.commentId,
+            data: item?.data as Record<string, any>,
+            dataType: item?.dataType || 'text',
+            myReactions: item?.myReactions as string[],
+            reactions: item?.reactions as Record<string, number>,
             user: formattedUserObject as UserInterface,
-            updatedAt: item.updatedAt,
-            editedAt: item.editedAt,
-            createdAt: item.createdAt,
-            childrenComment: item.children,
-            referenceId: item.referenceId,
+            updatedAt: item?.updatedAt,
+            editedAt: item?.editedAt,
+            createdAt: item?.createdAt,
+            childrenComment: item?.children,
+            referenceId: item?.referenceId,
             mentionPosition: item?.metadata?.mentioned,
           };
         })

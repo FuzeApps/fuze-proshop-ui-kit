@@ -1,21 +1,21 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useNavigation } from '@react-navigation/native';
 import type { NativeStackNavigationProp } from '@react-navigation/native-stack';
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 import {
+  Alert,
+  FlatList,
+  Keyboard,
+  KeyboardAvoidingView,
+  Platform,
+  ScrollView,
+  Text,
+  TextInput,
   TouchableOpacity,
   View,
-  Text,
-  FlatList,
-  TextInput,
-  Platform,
-  KeyboardAvoidingView,
-  ScrollView,
-  Keyboard,
-  Alert,
 } from 'react-native';
-import { SvgXml } from 'react-native-svg';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import { SvgXml } from 'react-native-svg';
 import {
   arrowDown,
   cameraIcon,
@@ -27,18 +27,18 @@ import { useGetStyles } from './styles';
 
 import * as ImagePicker from 'expo-image-picker';
 
-import LoadingImage from '../../components/LoadingImage';
-import { createPostToFeed } from '../../providers/Social/feed-sdk';
-import LoadingVideo from '../../components/LoadingVideo';
+import { CommunityRepository } from '@amityco/ts-sdk-react-native';
+import { ResizeMode, Video } from 'expo-av';
 import * as VideoThumbnails from 'expo-video-thumbnails';
-import { Video, ResizeMode } from 'expo-av';
 import { useTheme } from 'react-native-paper';
-import type { MyMD3Theme } from '../../providers/amity-ui-kit-provider';
+import LoadingImage from '../../components/LoadingImage';
+import LoadingVideo from '../../components/LoadingVideo';
 import MentionPopup from '../../components/MentionPopup';
 import { ISearchItem } from '../../components/SearchItem';
-import { CommunityRepository } from '@amityco/ts-sdk-react-native';
-import { checkCommunityPermission } from '../../providers/Social/communities-sdk';
 import useAuth from '../../hooks/useAuth';
+import type { MyMD3Theme } from '../../providers/amity-ui-kit-provider';
+import { checkCommunityPermission } from '../../providers/Social/communities-sdk';
+import { createPostToFeed } from '../../providers/Social/feed-sdk';
 
 export interface IDisplayImage {
   url: string;
@@ -59,6 +59,7 @@ const CreatePost = ({ route }: any) => {
   const styles = useGetStyles();
   const { targetId, targetType, targetName } = route.params;
   const navigation = useNavigation<NativeStackNavigationProp<any>>();
+  const isBusy = useRef<boolean>(false);
   const [inputMessage, setInputMessage] = useState('');
   const [imageMultipleUri, setImageMultipleUri] = useState<string[]>([]);
   const [videoMultipleUri, setVideoMultipleUri] = useState<string[]>([]);
@@ -145,7 +146,11 @@ const CreatePost = ({ route }: any) => {
   const goBack = () => {
     navigation.goBack();
   };
+
+  // TODO: Add a loading state.
   const handleCreatePost = async () => {
+    if (isBusy.current) return;
+    isBusy.current = true;
     const mentionUserIds: string[] = mentionNames.map((item) => item.targetId);
     if (displayImages.length > 0) {
       const fileIdArr: (string | undefined)[] = displayImages.map(
@@ -163,7 +168,10 @@ const CreatePost = ({ route }: any) => {
         type,
         mentionUserIds.length > 0 ? mentionUserIds : [],
         mentionsPosition
-      );
+      ).finally(() => {
+        isBusy.current = false;
+      });
+
       if (response) {
         navigation.goBack();
       }
@@ -184,10 +192,13 @@ const CreatePost = ({ route }: any) => {
         type,
         mentionUserIds.length > 0 ? mentionUserIds : [],
         mentionsPosition
-      );
+      ).finally(() => {
+        isBusy.current = false;
+      });
+
       if (
         (community?.postSetting === 'ADMIN_REVIEW_POST_REQUIRED' ||
-          (community as Record<string, any>).needApprovalOnPostCreation) &&
+          (community as Record<string, any>)?.needApprovalOnPostCreation) &&
         response
       ) {
         const res = await checkCommunityPermission(
@@ -337,6 +348,7 @@ const CreatePost = ({ route }: any) => {
       setImageMultipleUri(totalImages);
     }
   };
+
   const pickVideo = async () => {
     let result = await ImagePicker.launchImageLibraryAsync({
       mediaTypes: ImagePicker.MediaTypeOptions.Videos,
@@ -353,6 +365,7 @@ const CreatePost = ({ route }: any) => {
       setVideoMultipleUri(totalVideos);
     }
   };
+
   const handleOnCloseImage = (originalPath: string) => {
     setDisplayImages((prevData) => {
       const newData = prevData.filter(
@@ -361,6 +374,7 @@ const CreatePost = ({ route }: any) => {
       return newData; // Remove the element at the specified index
     });
   };
+
   const handleOnCloseVideo = (originalPath: string) => {
     setDisplayVideos((prevData) => {
       const newData = prevData.filter(
@@ -369,6 +383,7 @@ const CreatePost = ({ route }: any) => {
       return newData; // Remove the element at the specified index
     });
   };
+
   const handleOnFinishImage = (
     fileId: string,
     fileUrl: string,
@@ -392,6 +407,7 @@ const CreatePost = ({ route }: any) => {
       return newData; // Update the state with the filtered array
     });
   };
+
   const handleOnFinishVideo = (
     fileId: string,
     fileUrl: string,
@@ -441,6 +457,7 @@ const CreatePost = ({ route }: any) => {
     setMentionsPosition((prev) => [...prev, position]);
     setCurrentSearchUserName('');
   };
+
   const handleSelectionChange = (event) => {
     setCursorIndex(event.nativeEvent.selection.start);
   };
@@ -504,8 +521,10 @@ const CreatePost = ({ route }: any) => {
           <View style={styles.headerTextContainer}>
             <Text style={styles.headerText}>{targetName}</Text>
           </View>
+          {/* TODO: add a loading state... */}
           <TouchableOpacity
             disabled={
+              isBusy ||
               inputMessage.length > 0 ||
               displayImages.length > 0 ||
               displayVideos.length > 0
@@ -530,7 +549,8 @@ const CreatePost = ({ route }: any) => {
       </SafeAreaView>
       <KeyboardAvoidingView
         behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
-        keyboardVerticalOffset={Platform.select({ ios: 100, android: 80 })}
+        //TODO: Watch out for this. It might cause issues on some devices
+        // keyboardVerticalOffset={Platform.select({ ios: 100, android: 80 })}
         style={styles.AllInputWrap}
       >
         <ScrollView style={styles.container}>
